@@ -18,12 +18,6 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        python -m venv ~/project/serenenv
-        source ~/project/serenenv/bin/activate
-        pip install -r seren-aiO/requirements.txt
-
     - name: Copy files via SSH
       uses: appleboy/scp-action@master
       with:
@@ -43,7 +37,6 @@ jobs:
           cd ~/project/seren-aiO
           source ../serenenv/bin/activate
           git pull origin main
-          pip install -r requirements.txt
           python manage.py migrate
           python manage.py collectstatic --noinput
           sudo systemctl restart gunicorn
