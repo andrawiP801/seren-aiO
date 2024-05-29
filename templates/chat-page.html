@@ -148,113 +148,111 @@
 			</div>
 		</div>
 	</section>
-
-
-
-	
-
 {% endblock main %}
 
 {% block script %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-	document.addEventListener('DOMContentLoaded', function() {
-		autosize();
-		function autosize() {
-			var texts = document.querySelectorAll('.write-message-input');
-			texts.forEach(function(text) {
-				text.setAttribute('rows', 1);
-				resize(text);
-			});
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      autosize();
 
-			texts.forEach(function(text) {
-				text.addEventListener('input', function() {
-					resize(text);
-				});
-			});
-		}
+      function autosize() {
+        var texts = document.querySelectorAll('.write-message-input');
+        texts.forEach(function(text) {
+          text.setAttribute('rows', 1);
+          resize(text);
+        });
 
-		function resize(text) {
-			text.style.height = 'auto';
-			text.style.height = text.scrollHeight + 'px';
-		}
-	});
-</script>
+        texts.forEach(function(text) {
+          text.addEventListener('input', function() {
+            resize(text);
+          });
+        });
+      }
 
+      function resize(text) {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight + 'px';
+      }
+    });
+  </script>
 
-    <script>
+  <script>
     const textarea = document.getElementById('input-query');
 
-textarea.addEventListener('keydown', function(event) {
-     if (event.key === 'Enter') {
-         send_query($('#send-query-form'));
-     }
-});
+    if (textarea) { // Verificar si textarea existe
+      textarea.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          send_query($('#send-query-form')[0]); // Obtener el elemento DOM en lugar del objeto jQuery
+        }
+      });
+    }
+
     let message_body = $('#messages');
     message_body.animate({
-    scrollTop: $('#messages').prop("scrollHeight")
-  }, 500);
-    let input_message = $('#input-query')
-let send_message_form = $('#send-query-form')
-     function send_query(button){
-        button.disabled = true;
-        let query = input_message.val();
-        message_element = `
-            <div class="mess-user">
-								<div class="main-mess">
-									<p>${query}</p>
-								</div>
-								<img src="{% static 'images/user.png' %}" alt="">
-							</div>
-    `;
-         message_body.append(message_element);
-          ai_response = `
-           <div class="mess-ai" id="loading">
-								<img src="{% static 'images/logo.png' %}" alt="">
-								<div class="main-mess">
-									<div class="dot-elastic"></div>
-								</div>
-							</div>
-    `;
-         message_body.append(ai_response);
-         message_body.animate({
-    scrollTop: $('#messages').prop("scrollHeight")
-  }, 500);
-        input_message.val("");
-        let data = {
-            'query': query,
-        }
-        console.log(data)
-        $.ajax({
-      url: '{% url 'query' %}',
-      type: 'post',
-      data: data,
-      success: function(response) {
-        //success call
-          console.log(response)
+      scrollTop: message_body.prop("scrollHeight")
+    }, 500);
+
+    let input_message = $('#input-query');
+    let send_message_form = $('#send-query-form');
+
+    function send_query(button){
+      button.disabled = true;
+      let query = input_message.val();
+      let message_element = `
+        <div class="mess-user">
+          <div class="main-mess">
+            <p>${query}</p>
+          </div>
+          <img src="{% static 'images/user.png' %}" alt="">
+        </div>
+      `;
+      message_body.append(message_element);
+      let ai_response = `
+        <div class="mess-ai" id="loading">
+          <img src="{% static 'images/logo.png' %}" alt="">
+          <div class="main-mess">
+            <div class="dot-elastic"></div>
+          </div>
+        </div>
+      `;
+      message_body.append(ai_response);
+      message_body.animate({
+        scrollTop: message_body.prop("scrollHeight")
+      }, 500);
+      input_message.val("");
+      let data = {
+        'query': query,
+      };
+      console.log(data);
+      $.ajax({
+        url: '{% url "query" %}',
+        type: 'post',
+        data: data,
+        success: function(response) {
+          // Success call
+          console.log(response);
           $("#no-message").remove();
           $("#loading").remove();
           ai_response = `
-           <div class="mess-ai">
-								<img src="{% static 'images/logo.png' %}" alt="">
-								<div class="main-mess">
-									<p>${response.messages}</p>
-								</div>
-							</div>
-    `;
-         message_body.append(ai_response);
-         message_body.animate({
-    scrollTop: $('#messages').prop("scrollHeight")
-  }, 500);
-         button.disabled = false;
-      },
-      error: function (error){
-
-           alert("Somthing wrong happend!!");
-                return;
-      }
-    });
-     }
-
-    </script>
+            <div class="mess-ai">
+              <img src="{% static 'images/logo.png' %}" alt="">
+              <div class="main-mess">
+                <p>${response.messages}</p>
+              </div>
+            </div>
+          `;
+          message_body.append(ai_response);
+          message_body.animate({
+            scrollTop: message_body.prop("scrollHeight")
+          }, 500);
+          button.disabled = false;
+        },
+        error: function (error){
+          alert("Something went wrong!!");
+          button.disabled = false; // Rehabilitar el botón en caso de error
+        }
+      });
+    }
+  </script>
 {% endblock script %}
