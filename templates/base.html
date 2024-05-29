@@ -53,8 +53,8 @@
                 {% endif %}
               </div>
 
-              {% block headerTitle %} {% endblock headerTitle %} {% if
-              user.is_authenticated %}
+              {% block headerTitle %} {% endblock headerTitle %} 
+              {% if user.is_authenticated %}
               <div class="header-auth">
                 <div class="profile-auth">
                   <img src="{% static 'images/user.png' %}" alt="" />
