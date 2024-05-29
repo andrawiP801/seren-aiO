@@ -90,7 +90,35 @@ def logout_view(request):
 
 @login_required
 def main_page(request):
-    return render(request, 'main-page.html')
+    motivational_phrases = [
+        "El único límite para alcanzar tus sueños eres tú mismo.",
+        "La vida es 10% lo que te sucede y 90% cómo reaccionas ante ello.",
+        "Nunca es demasiado tarde para ser lo que podrías haber sido.",
+        "El éxito no es la clave de la felicidad. La felicidad es la clave del éxito.",
+        "Cree en ti mismo y todo será posible.",
+        "No esperes el momento perfecto, toma el momento y hazlo perfecto.",
+        "La única forma de hacer un gran trabajo es amar lo que haces.",
+        "No te rindas, cada fracaso es una lección.",
+        "El futuro pertenece a quienes creen en la belleza de sus sueños.",
+        "La mayor gloria no es nunca caer, sino levantarse siempre.",
+        "La perseverancia es la clave para el éxito.",
+        "Haz de cada día tu obra maestra.",
+        "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+        "El dolor que sientes hoy será la fuerza que sentirás mañana.",
+        "No se trata de ser el mejor, se trata de ser mejor de lo que eras ayer.",
+        "La única diferencia entre un buen día y un mal día es tu actitud.",
+        "Si puedes soñarlo, puedes hacerlo.",
+        "El camino al éxito y el camino al fracaso son casi exactamente el mismo.",
+        "No cuentes los días, haz que los días cuenten.",
+        "La fuerza no proviene de la capacidad física, sino de una voluntad indomable."
+    ]
+    selected_phrase = random.choice(motivational_phrases)
+    
+    context = {
+        'motivational_phrase': selected_phrase
+    }
+    
+    return render(request, 'main-page.html', context)
 
 
 @login_required

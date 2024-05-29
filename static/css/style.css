@@ -7,88 +7,112 @@
     src: url(../fonts/That-Be-Enough.ttf);
 }
 
+/* >>>> color variable <<<< */
 
-/*
-=============================================================================
->>>> color variable <<<<
-==============================================================================
-*/
-
-
-:root{
+:root {
     --primary-color: #a8cbf9;
     --secondary-color: #a6e2c6;
     --black-color: #000;
 }
 
 body {
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
-h1,h2{
-    font-family: 'fontTitle';
+h1, h2 {
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-.container{
-    max-width: 1100px;
+.container {
+    max-width: 1280px;
     padding: 0 15px;
 }
-.section-padding{
+
+.section-padding {
     padding: 50px 0;
 }
-a{
+
+.index-section {
+    margin: 0 30px;
+}
+
+a {
     text-decoration: none;
 }
 
-img{
+img {
     max-width: 100%;
 }
 
-input:focus, textarea:focus{
+input:focus,
+textarea:focus {
     outline: none;
 }
 
-button{
+button {
     border: none;
 }
 
+/* HEADER */
 
-/* ============= HEADER ============== */
-
-header.main-header{
-    background: linear-gradient(to right, #d6b7f8, #d6b7f9);
+header.main-header {
+    background: none;
     padding: 10px 0;
 }
-.main-header .logo-sec img{
+
+.main-header .logo-sec img {
     width: 150px;
 }
-.header-auth .login-btn{
-    background: var(--primary-color);
-    padding: 8px 25px;
-    font-size: 30px;
-    font-family: 'fontBody';
-    color: var(--black-color);
+
+.header-auth .login-btn {
+    background: #19D8B6;
+    padding: 5px 25px;
+    font-size: 18px;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
     border-radius: 25px;
 }
-.page-title h2{
+
+.menu-ais {
+    max-width: 50px; /* Tamaño máximo permitido */
+    width: 100%; /* Ancho al 100% del contenedor */
+    height: auto; /* Mantener proporciones */
+}
+
+.login-btn-close{
+    background: #864499;
+    padding: 5px 25px;
+    font-size: 18px;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
+    border-radius: 25px;
+}
+
+.page-title h2 {
     margin-bottom: 0;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
+    color: #864499;
     font-size: 30px;
     margin-right: 15px;
 }
-.logo-sec{
+
+.logo-sec {
     display: flex;
     align-items: center;
     gap: 20px;
     position: relative;
 }
-.logo-sec a{
+
+.logo-sec a {
     font-size: 30px;
     color: #000;
     line-height: 20px;
     cursor: pointer;
 }
-.menu-open-div{
+
+.menu-open-div {
     position: absolute;
     left: 0;
     top: 110%;
@@ -96,281 +120,376 @@ header.main-header{
     padding: 15px;
     border-radius: 6px;
 }
-.menu-open-div a{
+
+.menu-open-div a {
     font-size: 25px;
     margin: 0;
 }
 
-.header-auth .signup-btn{
-    background: var(--secondary-color);
-    padding: 8px 25px;
-    font-size: 30px;
-    font-family: 'fontBody';
-    color: var(--black-color);
+.menu-ais {
+    width: 24px; /* Ajusta el tamaño según tus necesidades */
+    height: 24px; /* Ajusta el tamaño según tus necesidades */
+}
+
+.header-auth .signup-btn {
+    background: #864499;
+    padding: 5px 25px;
+    font-size: 18px;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
     border-radius: 25px;
     margin-left: 15px;
 }
 
-.main-body-content h1{
-    font-family: 'fontTitle';
+.main-body-content h1 {
+    font-family: 'Montaser Arabic', sans-serif;
     font-size: 60px;
     font-weight: 600;
     margin-left: 40px;
     letter-spacing: 5px;
     margin-bottom: 15px;
+    color: #864499;
 }
-.main-body-content p{
-    font-family: 'fontBody';
-    font-size: 40px;
+
+.main-body-content p {
+    font-family: 'Montaser Arabic', sans-serif;
+    font-size: 20px;
     line-height: 45px;
+    text-align: justify;
 }
-.main-body-content .info-btn{
-    background: var(--primary-color);
-    padding: 2px 25px;
-    font-size: 30px;
-    font-family: 'fontBody';
-    color: var(--black-color);
+
+.main-body-content .info-btn {
+    background: #864499;
+    padding: 2px 20px;
+    font-size: 18px;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
     border-radius: 25px;
     line-height: 40px;
-    margin-top: 40px;
+    margin-top: 35px;
 }
+
+.main-body-content img{
+    max-width: 400px;
+    width: 100%;
+}
+
 .main-body-image {
     display: flex;
     margin: auto;
 }
-.main-body-image img{
-    border-radius: 50%;
+
+.main-body-image img {
     max-width: 400px;
     width: 100%;
 }
-.main-body-content .moti-phrase{
-    background: #c4f2ff;
-    font-family: 'fontTitle';
-    color: var(--black-color);
+
+.main-body-content .moti-phrase {
+    background: #864499;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
+    font-size: 24px;
     border-radius: 20px;
     padding: 35px 20px;
     margin-top: 50px;
-
 }
-.profile-auth img{
+
+.profile-auth img {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
     cursor: pointer;
 }
-.signup-form{
-    background: var(--secondary-color);
+
+.bubble-button {
+    background-color: #864499; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 20px 40px; /* Espaciado interno más grande */
+    border-radius: 30px; /* Bordes redondeados */
+    position: relative; /* Posicionamiento relativo para el triángulo */
+    font-family: Arial, sans-serif; /* Familia de fuente */
+    font-size: 30px; /* Tamaño de fuente más grande */
+    text-align: center; /* Alineación del texto */
+}
+
+.bubble-button::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* Posición del triángulo */
+    left: 50%; /* Centrar el triángulo horizontalmente */
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent; /* Bordes transparentes para formar el triángulo */
+    border-right: 20px solid transparent;
+    border-top: 20px solid #864499; /* Color del triángulo */
+}
+
+.signup-form {
+    background: none;
     padding: 20px 10px;
     border-radius: 20px;
 }
-.signup-form label{
+
+.signup-form label {
     width: 100%;
     text-align: center;
-    font-size: 20px;
-    font-family: 'fontTitle';
+    font-size: 18px;
+    color: #864499;
+    font-family: 'Montaser Arabic', sans-serif;
 }
-.signup-form input, .signup-form select{
+
+.signup-form input,
+.signup-form select {
     width: 100%;
     background: #fff;
     border-radius: 25px;
     padding: 5px 10px;
-    border: none;
-    font-size: 18px;
-    font-family: 'fontTitle';
-}
-.signup-form .single-input{
-    margin-bottom: 10px;
-}
-.signup-logo-img{
-    position: absolute;
-    left: 40%;
-}
-.signup-logo-img img{
-    border-radius: 50%;
-    width: 300px;
+    border: 2px solid #19D8B6;
+    font-size: 16px;
+    font-family: 'Montaser Arabic', sans-serif;
+    cursor: text;
+    pointer-events: auto;
 }
 
-.signup-continue-btn h2{
-    font-family: 'fontBody';
-    font-size: 60px;
+.signup-form input.password-field {
+    width: 100%;
+}
+
+.signup-form .single-input {
+    margin-bottom: 10px;
+}
+
+.signup-form .single-input.password-input label {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.signup-continue-btn {
+    text-align: center;
+}
+
+.signup-logo-img {
+    text-align: center;
+    margin-top: 20px; /* Espacio entre el botón y la imagen */
+}
+
+.signup-logo-img img {
+    width: 400px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+.signup-continue-btn h2 {
+    font-family: 'Montaser Arabic', sans-serif;
+    font-size: 80px;
     margin-bottom: 30px;
 }
-.signup-continue-btn .submit-btn{
-    background: var(--secondary-color);
+
+.signup-continue-btn .submit-btn {
+    background: #19D8B6;
     padding: 5px 35px;
     font-size: 25px;
-    font-family: 'fontBody';
-    color: var(--black-color);
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
     border-radius: 25px;
 }
-.submit-btn-2{
+
+.submit-btn-2 {
     background: #fff;
     padding: 5px 35px;
     font-size: 25px;
-    font-family: 'fontBody';
+    font-family: 'Montaser Arabic', sans-serif;
     color: var(--black-color);
     border-radius: 25px;
 }
-.submit-btn-login{
-    background: var(--primary-color);
+
+.submit-btn-login {
+    background: #19D8B6;
     padding: 5px 35px;
     font-size: 25px;
-    font-family: 'fontBody';
-    color: var(--black-color) !important;
+    font-family: 'Montaser Arabic', sans-serif;
+    color: white;
     border-radius: 25px;
 }
 
-.login-form{
-    background: var(--primary-color);
+.login-form {
+    background: none;
     padding: 20px 10px;
     border-radius: 20px;
     height: 400px;
-    max-width: 500px;
+    max-width: 1000px;
 }
 
-.login-form label{
+.login-form label {
     font-size: 20px;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
+    color: #864499;
     margin-top: 50px;
 }
-.login-form input{
+
+.login-form input {
     width: 100%;
     background: #fff;
     border-radius: 25px;
     padding: 5px 10px;
-    border: none;
+    border: 2px solid #19D8B6;
     font-size: 18px;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
+    cursor: text;
+    pointer-events: auto;
 }
-.login-form .single-input{
+
+.login-form .single-input {
     margin-bottom: 10px;
 }
-.login-logo-img{
-    position: absolute;
-    left: 35%;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.login-logo-img img{
-    border-radius: 50%;
-    width: 250px;
+
+.login-logo-img {
+    text-align: center;
+    margin-top: 20px;
 }
 
-/* ========== Main Chat Box Sec ========== */
+.login-logo-img img {
+    width: 400px;
+}
 
-.main-chatbox{
-    border: 8px solid #d6b7f9;
+/* Main Chat Box Sec */
+
+.main-chatbox {
+    border: 8px solid #19D8B6;
     border-radius: 20px;
     padding: 15px 10px;
 }
-.main-chatbox-message{
+
+.main-chatbox-message {
     height: 450px;
     overflow-y: scroll;
 }
-.main-chatbox .mess-ai{
+
+.main-chatbox .mess-ai {
     display: flex;
     gap: 8px;
     align-items: end;
     margin: 15px 0;
 }
+
 .main-chatbox-message::-webkit-scrollbar {
     display: none;
 }
-.main-chatbox .mess-ai img{
+
+.main-chatbox .mess-ai img {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     object-fit: cover;
 }
-.main-chatbox .mess-ai .main-mess{
-    background: #d9d9d9;
+
+.main-chatbox .mess-ai .main-mess {
+    background: #BBF6DB;
     max-width: 60%;
     padding: 5px 20px;
     border-radius: 20px 20px 20px 0;
 }
-.main-chatbox .mess-ai .main-mess p{
+
+.main-chatbox .mess-ai .main-mess p {
     margin: 0;
     font-size: 20px;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-
-
-.main-chatbox .mess-user{
+.main-chatbox .mess-user {
     display: flex;
     gap: 8px;
     align-items: end;
     margin: 15px 0;
     justify-content: flex-end;
 }
-.main-chatbox .mess-user img{
+
+.main-chatbox .mess-user img {
     width: 25px;
     height: 25px;
     border-radius: 50%;
     object-fit: cover;
 }
-.main-chatbox .mess-user .main-mess{
+
+.main-chatbox .mess-user .main-mess {
     background: #d6b7f9;
     max-width: 60%;
     padding: 5px 20px;
     border-radius: 20px 20px 0 20px;
 }
-.main-chatbox .mess-user .main-mess p{
+
+.main-chatbox .mess-user .main-mess p {
     margin: 0;
     font-size: 20px;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
     line-height: 22px;
 }
 
-.write-message{
+.write-message {
     display: flex;
     gap: 10px;
     align-items: end;
     margin: 5px 0;
 }
-.write-message .write-message-input{
+
+.write-message .write-message-input {
     width: 100%;
-    background: #ffecdb;
+    background: #19D8B6;
     border: none;
     border-radius: 25px;
     padding: 10px 25px;
     font-size: 20px;
-    font-family: 'fontTitle';
+    font-family: 'Montaser Arabic', sans-serif;
     overflow: hidden;
+    cursor: text;
+    pointer-events: auto;
 }
-.write-message .mess-send-btn{
-    background: #d6b7f9;
+
+.write-message{
+    background: none;
     border: none;
     border-radius: 25px;
     padding: 10px 35px;
-    font-size: 35px;
+    font-size: 24px;
     line-height: 28px;
-    font-family: 'fontBody';
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-.password-error{
+.mess-send-btn{
+    background: #864499;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 35px;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: 'Montaser Arabic', sans-serif;
+}
+
+.password-error {
     font-size: 20px;
     margin: 0;
     color: #000;
 }
 
-.no-message-div{
+.no-message-div {
     display: grid;
     place-items: center;
     height: 100%;
 }
-.no-message-inner{
+
+.no-message-inner {
     border: 1px solid var(--primary-color);
     text-align: center;
     padding: 20px;
     border-radius: 10px;
 }
-.no-message-inner img{
+
+.no-message-inner img {
     width: 120px;
     margin-bottom: 15px;
 }
-.no-message-inner h2{
+
+.no-message-inner h2 {
     font-size: 25px;
     line-height: 20px;
 }

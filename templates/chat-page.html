@@ -6,7 +6,7 @@
 
 {% block headerTitle %}
 	<div class="page-title d-none d-md-block">
-		<h2>Chat AI</h2>
+		<h2>Chat Seren</h2>
 	</div>
 {% endblock headerTitle %}
 
@@ -114,13 +114,13 @@
                           <div class="main-mess">
                             <p>{{ message.user_message }}</p>
                           </div>
-                          <img src="{% static 'images/user.png' %}" alt="">
+                          <img src="{% static 'images/user_chat.png' %}" alt="">
                         </div>
                         {% endif %}
 
                         {% if message.ai_message %}
                           <div class="mess-ai">
-                            <img src="{% static 'images/logo.jpg' %}" alt="">
+                            <img src="{% static 'images/logo.png' %}" alt="">
                             <div class="main-mess">
                               <p>{{ message.ai_message }}</p>
                             </div>
@@ -132,7 +132,7 @@
                     <div class="no-message-div" id="no-message">
                       <div class="no-message-inner">
                         <img src="{% static 'images/logo_SerenAI.png' %}" alt="">
-                        <h2>How can I help you?</h2>
+                        <h2>¿Cómo puedo apoyarte hoy?</h2>
                       </div>
                     </div>
                 {% endif %}
@@ -141,7 +141,7 @@
 
 						<div class="write-message">
 							<textarea name="query" id="input-query" rows="1" class="write-message-input" role="textbox" contenteditable></textarea>
-							<button type="submit" onclick="send_query(this)" id="#send-query-form" class="mess-send-btn">Send</button>
+							<button type="submit" onclick="send_query(this)" id="#send-query-form" class="mess-send-btn">Enviar</button>
 						</div>
 					</div>
 				</div>
@@ -210,7 +210,7 @@ let send_message_form = $('#send-query-form')
          message_body.append(message_element);
           ai_response = `
            <div class="mess-ai" id="loading">
-								<img src="{% static 'images/logo.jpg' %}" alt="">
+								<img src="{% static 'images/logo.png' %}" alt="">
 								<div class="main-mess">
 									<div class="dot-elastic"></div>
 								</div>
@@ -236,7 +236,7 @@ let send_message_form = $('#send-query-form')
           $("#loading").remove();
           ai_response = `
            <div class="mess-ai">
-								<img src="{% static 'images/logo.jpg' %}" alt="">
+								<img src="{% static 'images/logo.png' %}" alt="">
 								<div class="main-mess">
 									<p>${response.messages}</p>
 								</div>
