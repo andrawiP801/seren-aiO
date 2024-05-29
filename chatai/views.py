@@ -21,7 +21,7 @@ def signup_page(request):
     error_message = None
     
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('main')
 
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -65,7 +65,7 @@ def signup_page(request):
 def login_page(request):
     
     if request.user.is_authenticated:
-        return redirect('home')
+        return redirect('main')
     
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -85,7 +85,7 @@ def login_page(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
 
 
 @login_required
