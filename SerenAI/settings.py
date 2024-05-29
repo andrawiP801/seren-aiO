@@ -149,6 +149,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'chatai.User'
 
+import os
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -156,7 +157,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/path/to/your/django/logs/django_debug.log',
+            'filename': os.path.join(BASE_DIR, 'logs/django_debug.log'),
         },
     },
     'loggers': {
