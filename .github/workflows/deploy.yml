@@ -34,6 +34,7 @@ jobs:
         username: ${{ secrets.SERVER_USER }}
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
+          set -e  # Detiene la ejecución si ocurre un error
           cd ~/project/seren-aiO
           source ../serenenv/bin/activate
           git pull origin main
@@ -41,3 +42,5 @@ jobs:
           python manage.py collectstatic --noinput
           sudo systemctl restart gunicorn
           sudo systemctl restart nginx
+          echo "Despliegue completado con éxito."
+      
