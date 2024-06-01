@@ -58,7 +58,9 @@
               {% if user.is_authenticated %}
               <div class="header-auth">
                 <div class="profile-auth">
-                  <img src="{% static 'images/user.png' %}" alt="" />
+                  <a href="{% url 'profile' %}">
+                    <img src="{% static 'images/user.png' %}" alt="Perfil" />
+                  </a>
                   <a href="{% url 'logout' %}" class="login-btn-close ms-4"
                     >Cerrar Sesion</a
                   >
