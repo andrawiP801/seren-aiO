@@ -119,14 +119,16 @@ header.main-header {
     background: var(--secondary-color);
     padding: 15px;
     border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Añade espacio entre los elementos del menú */
 }
 
 .menu-open-div a {
     font-size: 25px;
     margin: 0;
+}
+
+.menu-ais {
+    width: 24px; /* Ajusta el tamaño según tus necesidades */
+    height: 24px; /* Ajusta el tamaño según tus necesidades */
 }
 
 .header-auth .signup-btn {
@@ -501,7 +503,6 @@ header.main-header {
 .profile-card {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
 }
 
@@ -581,8 +582,8 @@ header.main-header {
     color: #6c757d;
 }
 
-/* Carousel Style */
 
+/* carrousel de libros */
 .carousel-inner {
     display: flex;
     justify-content: center;
