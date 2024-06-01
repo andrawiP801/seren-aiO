@@ -27,18 +27,16 @@
             <div class="d-flex justify-content-between align-items-center">
               <div class="logo-sec">
                 {% if user.is_authenticated %}
-                <a id="menu-btn">
-                  <img
-                    src="{% static 'images/menu_icon.png' %}"
-                    alt="Menu"
-                    class="menu-ais"
-                  />
-                </a>
-                <div class="menu-open-div d-none" id="menu-open-div">
-                  <a class="" href="{% url 'chat' %}">Chatea con Seren</a>
-                  <a class="" href="{% url 'books' %}">Biblioteca</a>
-                </div>
-                {% endif %} 
+                <input type="checkbox" id="toggle" />
+                <label class="button" for="toggle">
+                  <nav class="nav">
+                    <ul>
+                      <li><a href="{% url 'chat' %}">Chatea con Seren</a></li>
+                      <li><a href="{% url 'books' %}">Biblioteca</a></li>
+                    </ul>
+                  </nav>
+                </label>
+                {% endif %}
                 {% if user.is_authenticated %}
                 <a href="{% url 'main' %}">
                   <img
@@ -56,7 +54,7 @@
                 {% endif %}
               </div>
 
-              {% block headerTitle %} {% endblock headerTitle %} 
+              {% block headerTitle %} {% endblock headerTitle %}
               {% if user.is_authenticated %}
               <div class="header-auth">
                 <div class="profile-auth">
@@ -90,25 +88,6 @@
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-    <script>
-      const menuOpenBtn = document.getElementById("menu-btn");
-      const menuOpenDiv = document.getElementById("menu-open-div");
-
-      menuOpenBtn.addEventListener("click", () => {
-        console.log("click");
-        menuOpenDiv.classList.toggle("d-none");
-      });
-
-      document.addEventListener("click", (event) => {
-        if (
-          !menuOpenBtn.contains(event.target) &&
-          event.target !== menuOpenBtn
-        ) {
-          menuOpenDiv.classList.add("d-none");
-        }
-      });
-    </script>
 
     {% block script %} {% endblock script %}
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
