@@ -81,7 +81,7 @@ header.main-header {
     height: auto; /* Mantener proporciones */
 }
 
-.login-btn-close {
+.login-btn-close{
     background: #864499;
     padding: 5px 25px;
     font-size: 18px;
@@ -114,38 +114,19 @@ header.main-header {
 
 .menu-open-div {
     position: absolute;
-    top: 100%;
     left: 0;
+    top: 110%;
     background: var(--secondary-color);
-    padding: 10px;
+    padding: 15px;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Espacio entre los elementos del menú */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    gap: 10px; /* Añade espacio entre los elementos del menú */
 }
 
-.menu-item {
-    font-size: 18px;
-    color: #000;
-    padding: 10px 20px;
-    background: #fff;
-    border-radius: 4px;
-    text-align: left;
-}
-
-.menu-item:hover {
-    background: #f1f1f1;
-}
-
-.menu-btn {
-    cursor: pointer;
-}
-
-.menu-ais {
-    width: 30px;
-    height: 30px;
+.menu-open-div a {
+    font-size: 25px;
+    margin: 0;
 }
 
 .header-auth .signup-btn {
@@ -186,7 +167,7 @@ header.main-header {
     margin-top: 35px;
 }
 
-.main-body-content img {
+.main-body-content img{
     max-width: 400px;
     width: 100%;
 }
@@ -462,7 +443,7 @@ header.main-header {
     pointer-events: auto;
 }
 
-.write-message {
+.write-message{
     background: none;
     border: none;
     border-radius: 25px;
@@ -472,7 +453,7 @@ header.main-header {
     font-family: 'Montaser Arabic', sans-serif;
 }
 
-.mess-send-btn {
+.mess-send-btn{
     background: #864499;
     border: none;
     border-radius: 25px;
@@ -600,7 +581,7 @@ header.main-header {
     color: #6c757d;
 }
 
-/* Carousel style */
+/* Carousel Style */
 
 .carousel-inner {
     display: flex;
