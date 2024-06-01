@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Libros Recomendados - SerenAI {% endblock title %}
+
+{% block main %}
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2>Libros recomendados</h2>
+            </div>
+            <div class="col-12">
+                <div id="bookCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for book in books %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="d-flex justify-content-center">
+                                <a href="{% url 'book_detail' book.id %}">
+                                    <img src="{{ book.cover_url }}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#bookCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#bookCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

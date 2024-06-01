@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat
+from .models import User, Chat, Book
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
@@ -161,3 +161,11 @@ def profile_page(request):
         return redirect('profile')
     
     return render(request, 'profile.html')
+
+def books_page(request):
+    books = Book.objects.all()  # Asumiendo que tienes un modelo de Book
+    return render(request, 'books.html', {'books': books})
+
+def book_detail(request, book_id):
+    book = Book.objects.get(id=book_id)
+    return render(request, 'book_detail.html', {'book': book})

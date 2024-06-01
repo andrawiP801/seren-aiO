@@ -503,7 +503,6 @@ header.main-header {
 .profile-card {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
 }
 
@@ -581,4 +580,29 @@ header.main-header {
 
 .text-center p {
     color: #6c757d;
+}
+
+
+/* carrousel de libros */
+.carousel-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #864499;
+    border-radius: 50%;
+    padding: 10px;
+}
+
+h2 {
+    color: #864499;
+    font-family: 'Montaser Arabic', sans-serif;
+    margin-bottom: 20px;
 }

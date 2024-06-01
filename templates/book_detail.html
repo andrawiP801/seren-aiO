@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{ book.title }} - SerenAI {% endblock title %}
+
+{% block main %}
+<section class="section-padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2>{{ book.title }}</h2>
+                <img src="{{ book.cover_url }}" class="img-fluid rounded" alt="{{ book.title }}">
+                <p>{{ book.content }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock main %}

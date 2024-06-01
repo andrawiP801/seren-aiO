@@ -36,3 +36,11 @@ class Chat(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    cover_url = models.URLField(max_length=200)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
