@@ -1,6 +1,5 @@
+# views.py
 import random
-import time
-
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -144,3 +143,21 @@ def chat_query(request):
     response = get_chat(query, request.user.id, history)
     Chat.objects.create(user=request.user, user_message=query, ai_message=response.content)
     return JsonResponse({"messages": response.content}, status=200)
+
+
+@login_required
+def profile_page(request):
+    if request.method == 'POST':
+        request.user.name = request.POST.get('name')
+        request.user.surname = request.POST.get('surname')
+        request.user.date_of_birth = request.POST.get('date_of_birth')
+        request.user.gender = request.POST.get('gender')
+        request.user.username = request.POST.get('username')
+        request.user.email = request.POST.get('email')
+        password = request.POST.get('password')
+        if password:
+            request.user.set_password(password)
+        request.user.save()
+        return redirect('profile')
+    
+    return render(request, 'profile.html')
