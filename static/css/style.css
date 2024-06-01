@@ -495,6 +495,7 @@ header.main-header {
 }
 
 /* Profile style */
+
 .profile-section {
     padding: 40px 0;
 }
@@ -514,22 +515,25 @@ header.main-header {
 
 .profile-picture {
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin-bottom: 10px;
+    border: 4px solid #26e0d1;
 }
 
 .profile-form label {
     font-weight: bold;
+    color: #6c757d;
 }
 
 .profile-form .form-control {
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    border: 1px solid #26e0d1;
+    border-radius: 20px;
     padding: 10px;
 }
 
@@ -540,21 +544,40 @@ header.main-header {
 }
 
 .btn-primary {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
+    background-color: #26e0d1;
+    border-color: #26e0d1;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
 .btn-primary:hover {
-    background-color: #4cae4c;
-    border-color: #4cae4c;
+    background-color: #1bb8a9;
+    border-color: #1bb8a9;
 }
 
 .btn-danger {
     background-color: #d9534f;
     border-color: #d9534f;
+    border-radius: 20px;
+    padding: 10px 20px;
 }
 
 .btn-danger:hover {
     background-color: #c9302c;
     border-color: #c9302c;
+}
+
+.btn-link {
+    color: #26e0d1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-link:hover {
+    color: #1bb8a9;
+    text-decoration: underline;
+}
+
+.text-center p {
+    color: #6c757d;
 }
