@@ -532,9 +532,10 @@ header.main-header {
 }
 
 .profile-form .form-control {
-    border: 1px solid #26e0d1;
+    border: 2px solid #26e0d1;
     border-radius: 20px;
     padding: 10px;
+    background-color: #f8f9fa;
 }
 
 .profile-form .form-control:focus {
