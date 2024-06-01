@@ -19,30 +19,30 @@
                         <div class="col-md-4 text-center">
                             <div class="profile-picture">
                                 <img src="{% static 'images/user.png' %}" alt="Profile Picture" class="profile-img">
-                                <a href="#" class="btn btn-link">Cambiar foto de perfil</a>
+                                <a href="#" id="edit-data" class="btn btn-link">Editar datos</a>
                                 <p>Editar datos</p>
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <form method="post" action="">
+                            <form method="post" action="" id="profile-form">
                                 {% csrf_token %}
                                 <div class="profile-form">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="name">Nombre</label>
-                                            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" required>
+                                            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" disabled required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="surname">Apellidos</label>
-                                            <input type="text" class="form-control" id="surname" name="surname" value="{{ user.surname }}" required>
+                                            <input type="text" class="form-control" id="surname" name="surname" value="{{ user.surname }}" disabled required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="date_of_birth">Fecha de nacimiento</label>
-                                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ user.date_of_birth }}" required>
+                                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" value="{{ user.date_of_birth }}" disabled required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="gender">Género</label>
-                                            <select class="form-control" id="gender" name="gender" required>
+                                            <select class="form-control" id="gender" name="gender" disabled required>
                                                 <option value="masculino" {% if user.gender == 'masculino' %}selected{% endif %}>Masculino</option>
                                                 <option value="femenino" {% if user.gender == 'femenino' %}selected{% endif %}>Femenino</option>
                                                 <option value="otro" {% if user.gender == 'otro' %}selected{% endif %}>Otro</option>
@@ -50,20 +50,20 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="username">Usuario</label>
-                                            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+                                            <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" disabled required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="email">Correo electrónico</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" disabled required>
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="password">Contraseña</label>
-                                            <input type="password" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password" disabled>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                    <button type="button" id="save-button" class="btn btn-primary" disabled>Guardar cambios</button>
                                 </div>
                             </form>
                         </div>
@@ -73,4 +73,54 @@
         </div>
     </div>
 </section>
+
+<!-- Modal para pedir la contraseña -->
+<div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passwordModalLabel">Confirmar contraseña</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="password-form">
+                    <div class="mb-3">
+                        <label for="confirm-password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="confirm-password" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="confirm-password-button" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('edit-data').addEventListener('click', function(e) {
+    e.preventDefault();
+    const formElements = document.querySelectorAll('#profile-form .form-control');
+    formElements.forEach(element => {
+        element.disabled = false;
+    });
+    document.getElementById('save-button').disabled = false;
+});
+
+document.getElementById('save-button').addEventListener('click', function() {
+    const passwordModal = new bootstrap.Modal(document.getElementById('passwordModal'));
+    passwordModal.show();
+});
+
+document.getElementById('confirm-password-button').addEventListener('click', function() {
+    const passwordInput = document.getElementById('confirm-password');
+    if (passwordInput.value.trim() === '') {
+        alert('Por favor, ingrese su contraseña.');
+        return;
+    }
+    document.getElementById('password').value = passwordInput.value;
+    document.getElementById('profile-form').submit();
+});
+</script>
 {% endblock main %}
