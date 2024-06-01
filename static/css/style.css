@@ -119,6 +119,22 @@ header.main-header {
     background: var(--secondary-color);
     padding: 15px;
     border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre los elementos del menú */
+}
+
+.menu-item {
+    font-size: 18px;
+    color: #000;
+    padding: 10px 20px;
+    background: #fff;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.menu-item:hover {
+    background: #f1f1f1;
 }
 
 .menu-open-div a {
