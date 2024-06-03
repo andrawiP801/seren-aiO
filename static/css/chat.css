@@ -1,79 +1,68 @@
 /* Contenedor principal del chat */
 .serenai-chat-container {
-    border: 8px solid #19D8B6; /* Color específico de ejemplo */
-    border-radius: 20px;
-    padding: 15px 10px;
-    background-color: #ffffff; /* Fondo blanco para el contenedor */
-    margin: 20px auto; /* Centralizado con margen */
-    max-width: 600px; /* Control del ancho máximo */
-    width: 90%; /* Ajuste del ancho relativo al tamaño de la pantalla */
-    box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el ancho */
+    border: 8px solid #19D8B6; /* Borde verde agua */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 15px 10px; /* Espaciado interno */
+    background-color: white; /* Fondo blanco */
+    width: 80%; /* Ajuste del ancho al 80% del contenedor padre */
+    max-width: 600px; /* Ancho máximo de 600px */
+    margin: 20px auto; /* Centralizado horizontalmente */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
 }
 
-/* Área donde se muestran los mensajes */
+/* Área de los mensajes */
 .serenai-chat-messages {
-    max-height: 450px; /* Altura máxima antes de desplazar */
-    overflow-y: auto; /* Permite desplazamiento vertical */
-    padding: 5px; /* Espaciado interno para los mensajes */
+    height: 450px; /* Altura fija */
+    overflow-y: auto; /* Desplazamiento vertical si es necesario */
+    background-color: #f0f0f0; /* Fondo gris claro para el área de mensajes */
+    border-radius: 15px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Margen inferior */
 }
 
-/* Mensajes del usuario y del sistema en el chat */
+/* Estilos para mensajes de AI y usuario */
 .serenai-chat-message {
-    padding: 8px 16px; /* Acolchado para cada mensaje */
-    margin: 4px 0; /* Margen entre mensajes */
-    border-radius: 15px; /* Bordes redondeados para los mensajes */
-    background-color: var(--secondary-color); /* Color de fondo alternativo */
-    color: var(--black-color); /* Color del texto */
-    width: auto; /* Ajuste automático del ancho */
-    min-height: 40px; /* Altura mínima para los mensajes */
-    display: flex; /* Permite la flexibilidad en la presentación de los mensajes */
-    align-items: center; /* Alinea los elementos internos al centro verticalmente */
-    justify-content: flex-end; /* Alinea los mensajes del usuario a la derecha */
+    background: #BBF6DB; /* Fondo verde claro para mensajes de AI */
+    color: #333; /* Color de texto oscuro para contraste */
+    padding: 8px 16px; /* Padding para los mensajes */
+    margin-bottom: 10px; /* Separación entre mensajes */
+    border-radius: 12px; /* Bordes redondeados para los mensajes */
+    display: flex; /* Uso de Flexbox para alinear elementos */
+    align-items: center; /* Centrar elementos verticalmente */
 }
 
-/* Área de entrada de mensaje */
+/* Mensajes del usuario con diferenciación de estilo */
+.serenai-user-message {
+    background: #d6b7f9; /* Fondo violeta para mensajes del usuario */
+    justify-content: flex-end; /* Alinear mensajes a la derecha */
+    text-align: right; /* Texto alineado a la derecha */
+}
+
+/* Área para escribir el mensaje */
 .write-message {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin: 10px 0;
+    display: flex; /* Flexbox para la disposición de los elementos */
+    gap: 10px; /* Espacio entre el input y el botón */
+    padding: 10px 0; /* Padding superior e inferior */
 }
 
-.write-message .write-message-input {
-    flex-grow: 1; /* Permite que el área de entrada crezca y llene el espacio */
-    border: 2px solid #19D8B6; /* Borde con el color principal */
-    border-radius: 20px;
-    padding: 10px;
+.write-message-input {
+    flex-grow: 1; /* El input ocupa todo el espacio disponible */
+    border: 2px solid #19D8B6; /* Borde del mismo color que el contenedor */
+    border-radius: 25px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
 }
 
-.write-message .mess-send-btn {
-    background-color: #864499; /* Color para el botón de enviar */
-    border-radius: 20px;
-    padding: 10px 20px;
-    color: white; /* Texto blanco para mejor visibilidad */
-    cursor: pointer; /* Cursor de mano para indicar acción */
+.mess-send-btn {
+    background: #864499; /* Fondo violeta oscuro para el botón enviar */
+    color: white; /* Texto blanco */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 20px; /* Padding */
+    cursor: pointer; /* Cursor de mano */
 }
 
-
-.no-message-div {
-    display: grid;
-    place-items: center;
-    height: 100%;
-}
-
-.no-message-inner {
-    border: 1px solid var(--primary-color);
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.no-message-inner img {
-    width: 120px;
-    margin-bottom: 15px;
-}
-
-.no-message-inner h2 {
-    font-size: 25px;
-    line-height: 20px;
+/* Adaptaciones para dispositivos móviles */
+@media (max-width: 768px) {
+    .serenai-chat-container {
+        width: 95%; /* Ajuste de ancho para dispositivos más pequeños */
+    }
 }
