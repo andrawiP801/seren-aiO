@@ -13,11 +13,6 @@
     flex-direction: column;
 }
 
-.chat-header {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;

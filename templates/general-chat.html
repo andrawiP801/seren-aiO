@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Chat General - SerenAI{% endblock %}
+{% block title %}Foro - SerenAI{% endblock %}
+
+{% block headerTitle %}
+	<div class="page-title d-none d-md-block">
+		<h2>Foro</h2>
+	</div>
+{% endblock headerTitle %}
+
 
 {% block main %}
 <div class="chat-container">
-    <div class="chat-header">
-        <h2>Foro</h2>
-    </div>
     <div class="chat-messages">
         {% for message in messages %}
         <div class="chat-message {% if message.user == request.user %}user-message{% else %}ai-message{% endif %}">
