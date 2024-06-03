@@ -10,6 +10,7 @@ from .ai_model import get_chat
 from .models import User, Chat, Book
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 
 # Create your views here.
@@ -150,7 +151,9 @@ def profile_page(request):
     if request.method == 'POST':
         request.user.name = request.POST.get('name')
         request.user.surname = request.POST.get('surname')
-        request.user.date_of_birth = request.POST.get('date_of_birth')
+        date_of_birth_str = request.POST.get('date_of_birth')
+        if date_of_birth_str:
+            request.user.date_of_birth = datetime.strptime(date_of_birth_str, '%Y-%m-%d').date()
         request.user.gender = request.POST.get('gender')
         request.user.username = request.POST.get('username')
         request.user.email = request.POST.get('email')
@@ -160,7 +163,12 @@ def profile_page(request):
         request.user.save()
         return redirect('profile')
     
-    return render(request, 'profile.html')
+    user_date_of_birth = request.user.date_of_birth.strftime('%Y-%m-%d') if request.user.date_of_birth else ''
+    context = {
+        'user': request.user,
+        'user_date_of_birth': user_date_of_birth,
+    }
+    return render(request, 'profile.html', context)
 
 def books_page(request):
     books = Book.objects.all()  # Asumiendo que tienes un modelo de Book
