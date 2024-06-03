@@ -7,9 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat, Book
+from .models import User, Chat, Book, Thread, Post
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .forms import ThreadForm, PostForm
 from datetime import datetime
 
 
@@ -177,3 +178,34 @@ def books_page(request):
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'book_detail.html', {'book': book})
+
+
+def forum_home(request):
+    threads = Thread.objects.all()
+    return render(request, 'home-thread.html', {'threads': threads})
+
+def thread_view(request, pk):
+    thread = Thread.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.thread = thread
+            post.created_by = request.user
+            post.save()
+            return redirect('thread_view', pk=thread.pk)
+    else:
+        form = PostForm()
+    return render(request, 'thread.html', {'thread': thread, 'form': form})
+
+def new_thread(request):
+    if request.method == 'POST':
+        form = ThreadForm(request.POST)
+        if form.is_valid():
+            thread = form.save(commit=False)
+            thread.created_by = request.user
+            thread.save()
+            return redirect('forum_home')
+    else:
+        form = ThreadForm()
+    return render(request, 'new_thread.html', {'form': form})
