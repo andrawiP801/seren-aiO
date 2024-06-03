@@ -7,10 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat, Book, Thread, Post
+from .models import User, Chat, Book
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import ThreadForm, PostForm
 from datetime import datetime
 
 
