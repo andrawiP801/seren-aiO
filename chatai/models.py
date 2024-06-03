@@ -44,20 +44,3 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
-    
-class Thread(models.Model):
-    title = models.CharField(max_length=255)
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.title
-
-class Post(models.Model):
-    thread = models.ForeignKey(Thread, related_name='posts', on_delete=models.CASCADE)
-    message = models.TextField()
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.message[:50]
