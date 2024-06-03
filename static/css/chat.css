@@ -1,67 +1,104 @@
-/* Contenedor del chat */
+/* Contenedor principal del chat */
 .serenai-chat-container {
-    border: 2px solid var(--primary-color); /* Borde ligero y colorido */
-    border-radius: 20px; /* Esquinas redondeadas */
-    background-color: white; /* Fondo blanco */
-    padding: 20px; /* Espaciado interno */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    margin: 20px; /* Margen externo para separación */
-    max-width: 600px; /* Ancho máximo para el contenedor */
-    margin-left: auto; /* Centrado horizontal */
-    margin-right: auto; /* Centrado horizontal */
+    border: 8px solid #19D8B6; /* Color específico de ejemplo */
+    border-radius: 20px;
+    padding: 15px 10px;
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    margin: 20px auto; /* Centralizado con margen */
+    max-width: 600px; /* Control del ancho máximo */
 }
 
-/* Área de los mensajes */
+/* Área donde se muestran los mensajes */
 .serenai-chat-messages {
-    height: 300px; /* Altura fija */
-    overflow-y: auto; /* Desplazamiento si es necesario */
-    margin-bottom: 20px; /* Espacio antes del área de entrada */
-    border: 1px solid var(--secondary-color); /* Borde sutil */
-    border-radius: 15px; /* Esquinas redondeadas */
-    padding: 10px; /* Espaciado interno para los mensajes */
+    height: 450px; /* Altura más grande para contener más mensajes */
+    overflow-y: scroll; /* Permitir desplazamiento */
 }
 
-/* Mensajes individuales */
-.serenai-chat-message {
-    padding: 10px; /* Espaciado interno */
-    margin-bottom: 10px; /* Separación entre mensajes */
-    border-radius: 15px; /* Esquinas redondeadas */
-    background-color: var(--secondary-color); /* Fondo para los mensajes de otros */
-    color: var(--black-color); /* Color del texto */
-    max-width: 80%; /* Ancho máximo de cada mensaje */
-    word-wrap: break-word; /* Asegurar que el texto no desborde */
+/* Mensajes del AI en el chat general */
+.serenai-chat-message.serenai-ai-message {
+    display: flex;
+    gap: 8px;
+    align-items: end;
+    margin: 15px 0;
+    background: #BBF6DB; /* Color de fondo para mensajes de AI */
+    border-radius: 20px 20px 20px 0;
+    padding: 5px 20px;
 }
 
-/* Mensajes del usuario actual */
-.serenai-user-message {
-    background-color: #d6b7f9; /* Fondo lila para los mensajes del usuario */
-    align-self: flex-end; /* Alineación a la derecha */
-    text-align: right; /* Texto alineado a la derecha */
+.serenai-chat-message.serenai-ai-message p {
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-/* Área de entrada de mensajes */
-.serenai-message-input {
-    display: flex; /* Flexbox para alinear input y botón */
-    gap: 10px; /* Separación entre el input y el botón */
+/* Mensajes del usuario en el chat general */
+.serenai-chat-message.serenai-user-message {
+    display: flex;
+    gap: 8px;
+    align-items: end;
+    justify-content: flex-end;
+    margin: 15px 0;
+    background: #d6b7f9; /* Color de fondo para mensajes del usuario */
+    border-radius: 20px 20px 0 20px;
+    padding: 5px 20px;
 }
 
-.serenai-message-input input {
-    flex-grow: 1; /* El input ocupa todo el espacio posible */
-    border: 2px solid var(--secondary-color); /* Borde colorido */
-    border-radius: 20px; /* Esquinas redondeadas */
-    padding: 10px; /* Espaciado interno */
+.serenai-chat-message.serenai-user-message p {
+    margin: 0;
+    font-size: 20px;
+    font-family: 'Montaser Arabic', sans-serif;
+    line-height: 22px;
 }
 
-.serenai-message-input button {
-    background-color: var(--primary-color); /* Fondo color principal */
-    color: white; /* Texto blanco */
-    border: none; /* Sin borde */
-    border-radius: 20px; /* Esquinas redondeadas */
-    padding: 10px 20px; /* Espaciado interno */
-    cursor: pointer; /* Cursor de mano al pasar el mouse */
+/* Área de entrada de mensaje */
+.write-message {
+    display: flex;
+    gap: 10px;
+    align-items: end;
+    margin: 5px 0;
 }
 
-.serenai-message-input input:focus,
-.serenai-message-input button:focus {
-    outline: none; /* Eliminar el contorno al enfocar */
+.write-message .write-message-input {
+    width: 100%;
+    background: #19D8B6; /* Fondo del área de entrada */
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-family: 'Montaser Arabic', sans-serif;
+    cursor: text;
+}
+
+.write-message .mess-send-btn {
+    background: #864499; /* Botón enviar con color específico */
+    border: none;
+    border-radius: 25px;
+    padding: 10px 35px;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: 'Montaser Arabic', sans-serif;
+    cursor: pointer;
+}
+
+.no-message-div {
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+.no-message-inner {
+    border: 1px solid var(--primary-color);
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.no-message-inner img {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.no-message-inner h2 {
+    font-size: 25px;
+    line-height: 20px;
 }
