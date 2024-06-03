@@ -1,61 +1,69 @@
-/* Estilos base del contenedor del chat */
-.serenai-chat-container {
-    width: 95%; /* O ajusta según la necesidad */
-    max-width: 800px;
+/* Base styles for chat container */
+.chat-container {
+    width: 100%;
+    max-width: 685px; /* Width as per your image */
+    height: 386px; /* Height as per your image */
     margin: 20px auto;
-    border: 8px solid #19D8B6;
-    border-radius: 20px;
     padding: 10px;
-    background-color: #FFF;
+    border: 2px solid #00A884;
+    border-radius: 12px;
+    background-color: #FFFFFF;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Área para mostrar los mensajes */
-.serenai-chat-messages {
-    height: 450px;
+.chat-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    flex-grow: 1;
     overflow-y: auto;
-    background-color: #f4f4f4;
-    border-radius: 15px;
+    background-color: #E8F5E9;
+    border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-/* Estilos para los mensajes del usuario y del admin */
-.serenai-chat-message {
+.chat-message {
     padding: 8px 16px;
     margin-bottom: 4px;
-    border-radius: 12px;
+    border-radius: 20px;
+    background-color: #DCF8C6; /* Light green for others */
+    max-width: 60%;
+}
+
+.user-message {
+    background-color: #34B7F1; /* Blue for the user */
+    align-self: flex-end;
+}
+
+.no-messages {
+    text-align: center;
+    color: #888;
+}
+
+.message-input {
     display: flex;
     align-items: center;
-    background-color: #BBF6DB; /* Color para admin */
-}
-
-.serenai-user-message {
-    background-color: #d6b7f9; /* Color para usuario */
-    justify-content: flex-end;
-    text-align: right;
-}
-
-/* Barra para escribir nuevos mensajes */
-.write-message {
-    display: flex;
     gap: 10px;
-    align-items: center;
-    margin-top: 10px;
 }
 
-.write-message-input {
+.input-message {
     flex-grow: 1;
-    border: 2px solid #19D8B6;
-    border-radius: 25px;
+    border: none;
+    border-radius: 20px;
     padding: 8px 16px;
-    background-color: #fff;
+    background-color: #f0f0f0;
 }
 
-.mess-send-btn {
+.send-button {
     padding: 8px 16px;
-    background-color: #864499;
+    background-color: #00B0FF;
     color: white;
-    border-radius: 25px;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
 }

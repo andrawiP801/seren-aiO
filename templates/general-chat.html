@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} Chat General - SerenAI {% endblock %}
+{% block title %}Chat General - SerenAI{% endblock %}
 
 {% block main %}
-<div class="serenai-chat-container">
-    <div class="serenai-chat-messages">
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Foro</h2>
+    </div>
+    <div class="chat-messages">
         {% for message in messages %}
-        <div class="serenai-chat-message {% if message.user == request.user %}serenai-user-message{% else %}serenai-ai-message{% endif %}">
-            <strong>{{ message.user.username }}:</strong>
+        <div class="chat-message {% if message.user == request.user %}user-message{% else %}ai-message{% endif %}">
             <p>{{ message.message }}</p>
         </div>
         {% empty %}
-        <p>No hay mensajes aún.</p>
+        <p class="no-messages">No hay mensajes aún.</p>
         {% endfor %}
     </div>
-    <div class="serenai-message-input">
+    <div class="message-input">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Enviar</button>
+            <input type="text" name="message" class="input-message" placeholder="Escribe un mensaje...">
+            <button type="submit" class="send-button">Enviar</button>
         </form>
     </div>
 </div>
