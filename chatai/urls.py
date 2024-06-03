@@ -13,5 +13,5 @@ urlpatterns = [
     path('profile/', profile_page, name='profile'),
     path('books/', books_page, name='books'),
     path('book/<int:book_id>/', book_detail, name='book_detail'),
-    path('chat/', chat_page, name='chat_page'),
+    path('foro/', chat_page, name='foro'),
 ]

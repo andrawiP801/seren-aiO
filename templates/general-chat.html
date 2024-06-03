@@ -1,21 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} Chat General - SerenAI {% endblock title %}
+{% block title %} Chat General - SerenAI {% endblock %}
 
-{% block headerTitle %}
-    <div class="serenai-chat-page-title d-none d-md-block">
-        <h2>Chat General</h2>
-    </div>
-{% endblock headerTitle %}
-
-{% block main %}
-<div class="serenai-chat-container section-padding">
+{% block content %}
+<div class="serenai-chat-container">
     <div class="serenai-chat-messages">
         {% for message in messages %}
-            <div class="serenai-chat-message {% if message.user == request.user %}serenai-user-message{% else %}serenai-ai-message{% endif %}">
-                <p>{{ message.message }}</p>
-            </div>
+        <div class="serenai-chat-message {% if message.user == request.user %}serenai-user-message{% else %}serenai-ai-message{% endif %}">
+            <strong>{{ message.user.username }}:</strong>
+            <p>{{ message.message }}</p>
+        </div>
+        {% empty %}
+        <p>No hay mensajes aún.</p>
         {% endfor %}
     </div>
     <div class="serenai-message-input">
@@ -26,4 +23,4 @@
         </form>
     </div>
 </div>
-{% endblock main %}
+{% endblock %}

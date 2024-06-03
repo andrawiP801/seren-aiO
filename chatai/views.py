@@ -182,14 +182,14 @@ def book_detail(request, book_id):
     return render(request, 'book_detail.html', {'book': book})
 
 @login_required
-def chat_page(request):
+def foro_page(request):
     if request.method == 'POST':
         form = ChatMessageForm(request.POST)
         if form.is_valid():
             chat_message = form.save(commit=False)
             chat_message.user = request.user
             chat_message.save()
-            return redirect('chat_page')
+            return redirect('foro')
     else:
         form = ChatMessageForm()
     
