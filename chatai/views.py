@@ -15,6 +15,8 @@ from datetime import datetime
 
 # Create your views here.
 def home_page(request):
+    if request.user.is_authenticated:
+        return redirect('main')
     return render(request, 'index.html')
 
 
