@@ -93,25 +93,27 @@
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <script>
-      const menuOpenBtn = document.getElementById("menu-btn");
-      const menuOpenDiv = document.getElementById("menu-open-div");
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuOpenBtn = document.getElementById("menu-btn");
+        const menuOpenDiv = document.getElementById("menu-open-div");
 
-      menuOpenBtn.addEventListener("click", () => {
-        console.log("click");
-        menuOpenDiv.classList.toggle("d-none");
-      });
+        if (menuOpenBtn && menuOpenDiv) {
+          menuOpenBtn.addEventListener("click", () => {
+            console.log("click");
+            menuOpenDiv.classList.toggle("d-none");
+          });
 
-      document.addEventListener("click", (event) => {
-        if (
-          !menuOpenBtn.contains(event.target) &&
-          event.target !== menuOpenBtn
-        ) {
-          menuOpenDiv.classList.add("d-none");
+          document.addEventListener("click", (event) => {
+            if (!menuOpenBtn.contains(event.target) && event.target !== menuOpenBtn) {
+              menuOpenDiv.classList.add("d-none");
+            }
+          });
+        } else {
+          console.error('Elementos no encontrados en el DOM');
         }
       });
     </script>
-
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     {% endblock script %}
   </body>
 </html>
