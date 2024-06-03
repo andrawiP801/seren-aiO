@@ -3,9 +3,13 @@ from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.memory import ChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
-
 from chatai.models import SiteConfig
+from langdetect import detect
 
+def translate_prompt(prompt, target_language):
+    # Placeholder function to translate the prompt if needed
+    # You can integrate with a translation API or use a predefined translation
+    return prompt
 
 def get_chat(qry, session, history):
     siteconfig = SiteConfig.objects.first()
@@ -13,6 +17,9 @@ def get_chat(qry, session, history):
     openai.api_key = os.getenv("OPENAI_API_KEY")
     llm = ChatOpenAI(model=siteconfig.open_ai_model if siteconfig.open_ai_model else "gpt-3.5-turbo-1106", temperature=0.9)
     chat_history_for_chain = ChatMessageHistory()
+
+    # Detect the language of the input query
+    detected_language = detect(qry)
 
     system_prompt = siteconfig.prompt if siteconfig.prompt else """You are an emotional support assistant designed to provide comfort and guidance to users experiencing depression, anxiety, or stress. Your role is to offer support through detailed recommendations for breathing exercises, relaxation techniques, and other coping strategies. 
 
@@ -26,6 +33,11 @@ def get_chat(qry, session, history):
 
     Begin each conversation by reminding the user that you are not a substitute for professional help. Then, ask them to describe how they feel or the situation they are going through, and offer appropriate support based on their input.
     """
+
+    # Translate the system prompt if the detected language is not English
+    if detected_language != 'en':
+        system_prompt = translate_prompt(system_prompt, detected_language)
+
     prompt = ChatPromptTemplate.from_messages(
         [
             (
