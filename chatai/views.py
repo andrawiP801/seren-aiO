@@ -7,10 +7,11 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat, Book
+from .models import User, Chat, Book, ChatMessage
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from .forms import ChatMessageForm
 
 
 # Create your views here.
@@ -179,3 +180,18 @@ def books_page(request):
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
     return render(request, 'book_detail.html', {'book': book})
+
+@login_required
+def chat_page(request):
+    if request.method == 'POST':
+        form = ChatMessageForm(request.POST)
+        if form.is_valid():
+            chat_message = form.save(commit=False)
+            chat_message.user = request.user
+            chat_message.save()
+            return redirect('chat_page')
+    else:
+        form = ChatMessageForm()
+    
+    messages = ChatMessage.objects.all().order_by('timestamp')
+    return render(request, 'general-chat.html', {'form': form, 'messages': messages})

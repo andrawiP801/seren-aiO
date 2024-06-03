@@ -1,0 +1,64 @@
+/* Contenedor principal del chat */
+.serenai-chat-container {
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Área donde se muestran los mensajes */
+.serenai-chat-messages {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+/* Estilo general para los mensajes */
+.serenai-chat-message {
+    padding: 8px 16px;
+    margin: 5px;
+    border-radius: 18px;
+    max-width: 80%;
+}
+
+/* Mensajes del AI */
+.serenai-ai-message {
+    background-color: var(--secondary-color);
+    align-self: flex-start;
+    margin-left: 10px;
+}
+
+/* Mensajes del usuario */
+.serenai-user-message {
+    background-color: #d6b7f9;
+    align-self: flex-end;
+    margin-right: 10px;
+}
+
+/* Área de entrada de mensajes */
+.serenai-message-input {
+    display: flex;
+    gap: 10px;
+}
+
+.serenai-message-input input {
+    flex-grow: 1;
+    border: 2px solid var(--secondary-color);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.serenai-message-input button {
+    background-color: #864499;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.serenai-message-input input:focus,
+.serenai-message-input button:focus {
+    outline: none;
+}
