@@ -5,8 +5,8 @@
     height: 386px; /* Height as per your image */
     margin: 20px auto;
     padding: 10px;
-    border: 2px solid #00A884;
-    border-radius: 12px;
+    border: 2px solid #19D8B6;
+    border-radius: 20px;
     background-color: #FFFFFF;
     box-sizing: border-box;
     display: flex;
@@ -16,7 +16,7 @@
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: #E8F5E9;
+    background-color: none;
     border-radius: 8px;
     padding: 10px;
     margin-bottom: 10px;
@@ -26,12 +26,12 @@
     padding: 8px 16px;
     margin-bottom: 4px;
     border-radius: 20px;
-    background-color: #DCF8C6; /* Light green for others */
+    background-color: #BBF6DB; 
     max-width: 60%;
 }
 
 .user-message {
-    background-color: #34B7F1; /* Blue for the user */
+    background-color: #D6B8F6; 
     align-self: flex-end;
 }
 
@@ -51,12 +51,12 @@
     border: none;
     border-radius: 20px;
     padding: 8px 16px;
-    background-color: #f0f0f0;
+    background-color: #19D8B6;
 }
 
 .send-button {
     padding: 8px 16px;
-    background-color: #00B0FF;
+    background-color: #864499;
     color: white;
     border: none;
     border-radius: 20px;
