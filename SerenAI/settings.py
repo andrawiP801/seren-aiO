@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-PRODUCTION = True
+PRODUCTION = False
 if PRODUCTION:
     SECRET_KEY = 'sgvty46c@#$!@$%FFRF$$fqhmje45r9h6movd2f=lg5_ba3yw)0bogmo61wc0y=n-g*y@ai-j8*=d*'
     DEBUG = False
