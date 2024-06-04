@@ -1,7 +1,7 @@
 import os
 import django
 from django.core.files import File
-from myproject.settings import MEDIA_ROOT
+from SerenAI.settings import MEDIA_ROOT
 
 # Configura Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SerenAI.settings')
