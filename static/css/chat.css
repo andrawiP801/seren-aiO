@@ -17,6 +17,7 @@
     overflow-y: auto;
     background-color: transparent; /* Corrected to 'transparent' instead of 'none' */
     border-radius: 15px;
+    font-family: 'Montaser Arabic', sans-serif;
     padding: 10px;
     margin: 10px;
 }
@@ -36,6 +37,7 @@
     background-color: #BBF6DB;
     text-align: left; /* Align text left for other users */
     float: left; /* Float left */
+    font-family: 'Montaser Arabic', sans-serif;
     max-width: 60%; /* Limit width to prevent full width stretching */
 }
 
@@ -44,6 +46,7 @@
     background-color: #d6b7f9; /* Color for user messages */
     text-align: right; /* Align text right for the user */
     float: right; /* Float right */
+    font-family: 'Montaser Arabic', sans-serif;
     max-width: 60%; /* Limit width to prevent full width stretching */
 }
 
@@ -55,7 +58,8 @@
 .message-input {
     display: flex;
     padding: 10px;
-    align-items: center;  /* Ensure alignment of elements inside this div */
+    align-items: center;        /* Ensure alignment of elements inside this div */
+    font-family: 'Montaser Arabic', sans-serif; 
     gap: 10px;            /* Adds space between the input field and the send button */
 }
 
@@ -65,12 +69,14 @@
     border-radius: 25px;
     padding: 8px 16px;
     background-color: #19D8B6;
+    gap: 10px;
 }
 
 .send-button {
     min-width: 100px;    /* Ensures the send button has a reasonable width */
     padding: 8px 16px;
     background-color: #864499;
+    font-family: 'Montaser Arabic', sans-serif;
     color: white;
     border-radius: 25px;
     border: none;        /* Removes border if present */
