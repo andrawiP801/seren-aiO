@@ -198,4 +198,20 @@ def foro_page(request):
 
 @login_required
 def emotional_state(request):
-    return render(request, 'emotional_state.html')
+    activities = {
+        "Respiración profunda": "1. Encuentra un lugar cómodo para sentarte.\n2. Cierra los ojos y respira profundamente por la nariz.\n3. Exhala lentamente por la boca.\n4. Repite este proceso por 5 minutos.",
+        "Meditación guiada": "1. Encuentra un lugar tranquilo.\n2. Siéntate en una posición cómoda.\n3. Sigue una meditación guiada en una aplicación o video.\n4. Concéntrate en tu respiración.",
+        "Ejercicio ligero": "1. Realiza una caminata de 10 minutos.\n2. Haz estiramientos suaves.\n3. Realiza movimientos de yoga simples.",
+        "Escuchar música relajante": "1. Encuentra una lista de reproducción de música relajante.\n2. Siéntate en un lugar cómodo.\n3. Cierra los ojos y concéntrate en la música.",
+        "Leer un libro": "1. Escoge un libro que te guste.\n2. Encuentra un lugar tranquilo para leer.\n3. Dedica al menos 15 minutos a la lectura.",
+        "Tomar un baño caliente": "1. Llena la bañera con agua caliente.\n2. Añade sales de baño o aceites esenciales.\n3. Relájate en el agua durante 20 minutos."
+    }
+    
+    selected_activity, activity_details = random.choice(list(activities.items()))
+    
+    context = {
+        'activity': selected_activity,
+        'details': activity_details,
+    }
+    
+    return render(request, 'emotional_state.html', context)
