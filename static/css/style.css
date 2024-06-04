@@ -640,7 +640,7 @@ h2 {
     text-align: center;
 }
 
-.emotional-state-container .recommendation-section {
+.emotional-state-container .recommendation-section h2{
     background-color: #8e24aa;
     color: white;
     padding: 10px;
