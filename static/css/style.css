@@ -592,31 +592,6 @@ header.main-header {
 }
 
 
-/* carrousel de libros */
-.carousel-inner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.carousel-item {
-    text-align: center;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #864499;
-    border-radius: 50%;
-    padding: 10px;
-}
-
-h2 {
-    color: #864499;
-    font-family: 'Montaser Arabic', sans-serif;
-    margin-bottom: 20px;
-}
-
-
 /* Styles for Emotional State Page */
 .emotional-state-container {
     text-align: center;
@@ -625,7 +600,7 @@ h2 {
 
 .emotional-state-container .main-content {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
     margin: 20px 0;
 }
@@ -634,10 +609,12 @@ h2 {
     width: 300px;
     height: 300px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .emotional-state-container .recommendation-section {
     text-align: center;
+    margin-top: 20px;
 }
 
 .emotional-state-container .recommendation-section h2 {
@@ -661,9 +638,11 @@ h2 {
 }
 
 .emotional-state-container .emotional-buttons-carousel-container {
+    display: flex;
+    align-items: center;
     width: 300px; /* Match the width of the calendar */
-    margin: 0 auto;
     overflow: hidden;
+    position: relative;
 }
 
 .emotional-state-container .emotional-buttons-carousel {
@@ -672,6 +651,7 @@ h2 {
     margin-top: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
+    flex: 1;
 }
 
 .emotional-state-container .emotional-buttons-carousel::-webkit-scrollbar {
@@ -722,6 +702,25 @@ h2 {
 
 .emotional-state-container .emotion-button.love {
     background-color: #f06292;
+}
+
+.carousel-button {
+    background-color: #8e24aa;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
 }
 
 /* Modal Styles */
