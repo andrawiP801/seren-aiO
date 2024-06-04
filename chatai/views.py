@@ -195,3 +195,7 @@ def foro_page(request):
     
     messages = ChatMessage.objects.all().order_by('timestamp')
     return render(request, 'general-chat.html', {'form': form, 'messages': messages})
+
+@login_required
+def emotional_state(request):
+    return render(request, 'emotional_state.html')
