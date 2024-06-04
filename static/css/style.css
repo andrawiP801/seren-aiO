@@ -646,7 +646,7 @@ header.main-header {
 .emotional-buttons-carousel-container {
     display: flex;
     align-items: center;
-    width: 320px; /* Slightly larger to accommodate arrows */
+    width: 380px; /* Slightly larger to accommodate arrows */
     overflow: hidden;
     position: relative;
     margin: 0 auto;
