@@ -46,7 +46,7 @@
 <!-- Modal for activity details -->
 <div id="activityModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
+        <span class="close" onclick="closeModal('activityModal')">&times;</span>
         <h2 id="modal-activity-name"></h2>
         <p id="modal-activity-details"></p>
     </div>
@@ -81,7 +81,12 @@ function showActivityDetails(activityName, activityDetails) {
 }
 
 function closeModal(modalId) {
-    document.getElementById(modalId).style.display = "none";
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = "none";
+    } else {
+        console.error(`Modal with ID '${modalId}' not found.`);
+    }
 }
 
 function scrollCarousel(direction) {

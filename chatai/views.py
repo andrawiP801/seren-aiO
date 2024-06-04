@@ -13,7 +13,6 @@ from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils import timezone
 from .forms import ChatMessageForm
-import random
 import json
 
 
@@ -178,7 +177,7 @@ def profile_page(request):
     return render(request, 'profile.html', context)
 
 def books_page(request):
-    books = Book.objects.all()  # Asumiendo que tienes un modelo de Book
+    books = Book.objects.all()
     return render(request, 'books.html', {'books': books})
 
 def book_detail(request, book_id):

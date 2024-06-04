@@ -38,9 +38,11 @@ class Chat(models.Model):
         return self.user.username
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
-    cover_url = models.URLField(max_length=200)
-    content = models.TextField()
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    description = models.TextField()
+    cover_image = models.ImageField(upload_to='book_covers/', null=True, blank=True)  # Campo para la portada
+    book_url = models.URLField(max_length=200, null=True, blank=True)  # Campo para la URL
 
     def __str__(self):
         return self.title
