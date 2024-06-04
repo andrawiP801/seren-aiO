@@ -83,6 +83,7 @@
     border: none;
     cursor: pointer;
     flex-shrink: 0; /* Prevent the button from shrinking */
+    align-self: flex-end; /* Align button to the end of the input container */
 }
 
 /* Responsive adjustments */
