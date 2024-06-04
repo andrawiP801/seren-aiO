@@ -17,4 +17,4 @@ urlpatterns = [
     path('emotional-state/', emotional_state, name='emotional_state'),
     path('save_emotion/', save_emotion, name='save_emotion'),
     path('emotion_log/', emotion_log, name='emotion_log'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

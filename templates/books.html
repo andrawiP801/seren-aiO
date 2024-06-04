@@ -16,9 +16,21 @@
                         {% for book in books %}
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
                             <div class="d-flex justify-content-center">
-                                <a href="{% url 'book_detail' book.id %}">
-                                    <img src="{{ book.cover_url }}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                {% if book.book_url %}
+                                <a href="{{ book.book_url }}" target="_blank">
+                                {% endif %}
+                                    {% if book.cover_image %}
+                                    <img src="{{ book.cover_image.url }}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                    {% else %}
+                                    <img src="{% static 'default_cover.jpg' %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                    {% endif %}
+                                {% if book.book_url %}
                                 </a>
+                                {% endif %}
+                            </div>
+                            <div class="text-center mt-2">
+                                <h5>{{ book.title }}</h5>
+                                <p>{{ book.author }}</p>
                             </div>
                         </div>
                         {% endfor %}
