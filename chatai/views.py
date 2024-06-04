@@ -7,11 +7,15 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat, Book, ChatMessage
+from .models import User, Chat, Book, ChatMessage, EmotionLog
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.utils import timezone
 from .forms import ChatMessageForm
+import random
+import json
+
 
 
 # Create your views here.
@@ -224,3 +228,34 @@ def emotional_state(request):
     }
     
     return render(request, 'emotional_state.html', context)
+
+@login_required
+def save_emotion(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        emotion = data.get('emotion')
+        user = request.user
+        today = timezone.now().date()
+
+        # Contar emociones guardadas hoy
+        emotions_today = EmotionLog.objects.filter(user=user, date__date=today).count()
+
+        if emotions_today >= 3:
+            return JsonResponse({'success': False, 'error': 'Has alcanzado el límite de 3 emociones por día.'})
+        
+        EmotionLog.objects.create(user=user, emotion=emotion, date=timezone.now())
+        return JsonResponse({'success': True})
+
+    return JsonResponse({'success': False, 'error': 'Método no permitido'}, status=405)
+
+@login_required
+def emotion_log(request):
+    user = request.user
+    emotions = EmotionLog.objects.filter(user=user).order_by('-date')
+
+    emotion_data = [
+        {'date': emotion.date.strftime('%Y-%m-%d %H:%M:%S'), 'emotion': emotion.emotion}
+        for emotion in emotions
+    ]
+
+    return JsonResponse({'emotions': emotion_data})

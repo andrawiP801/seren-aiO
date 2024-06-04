@@ -52,3 +52,12 @@ class ChatMessage(models.Model):
 
     def __str__(self):
         return f'{self.user.username}: {self.message[:20]}'
+  
+    
+class EmotionLog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    emotion = models.CharField(max_length=50)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.emotion} - {self.date}"

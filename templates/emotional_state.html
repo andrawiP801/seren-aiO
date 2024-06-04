@@ -13,19 +13,19 @@
 <div class="emotional-state-container">
     <div class="main-content">
         <div class="calendar-section">
-            <img src="{% static 'images/calendar.png' %}" alt="Calendar Icon" class="calendar-icon">
+            <img src="{% static 'images/calendar.png' %}" alt="Calendar Icon" class="calendar-icon" onclick="showEmotionLog()">
             <div class="emotional-buttons-carousel-container">
                 <button class="carousel-button prev" onclick="scrollCarousel(-1)">&#9664;</button>
                 <div class="emotional-buttons-carousel" id="carousel">
-                    <button class="emotion-button joy">Alegría</button>
-                    <button class="emotion-button sadness">Tristeza</button>
-                    <button class="emotion-button anger">Furia</button>
-                    <button class="emotion-button disgust">Desagrado</button>
-                    <button class="emotion-button fear">Miedo</button>
-                    <button class="emotion-button surprise">Sorpresa</button>
-                    <button class="emotion-button calm">Calma</button>
-                    <button class="emotion-button anxiety">Ansiedad</button>
-                    <button class="emotion-button love">Amor</button>
+                    <button class="emotion-button joy" onclick="confirmEmotion('Alegría')">Alegría</button>
+                    <button class="emotion-button sadness" onclick="confirmEmotion('Tristeza')">Tristeza</button>
+                    <button class="emotion-button anger" onclick="confirmEmotion('Furia')">Furia</button>
+                    <button class="emotion-button disgust" onclick="confirmEmotion('Desagrado')">Desagrado</button>
+                    <button class="emotion-button fear" onclick="confirmEmotion('Miedo')">Miedo</button>
+                    <button class="emotion-button surprise" onclick="confirmEmotion('Sorpresa')">Sorpresa</button>
+                    <button class="emotion-button calm" onclick="confirmEmotion('Calma')">Calma</button>
+                    <button class="emotion-button anxiety" onclick="confirmEmotion('Ansiedad')">Ansiedad</button>
+                    <button class="emotion-button love" onclick="confirmEmotion('Amor')">Amor</button>
                 </div>
                 <button class="carousel-button next" onclick="scrollCarousel(1)">&#9654;</button>
             </div>
@@ -52,15 +52,36 @@
     </div>
 </div>
 
+<!-- Modal for emotion confirmation -->
+<div id="emotionModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('emotionModal')">&times;</span>
+        <h2 id="modal-emotion-name"></h2>
+        <p>¿Estás seguro que deseas guardar esta emoción?</p>
+        <button onclick="saveEmotion()">Guardar</button>
+    </div>
+</div>
+
+<!-- Modal for emotion log -->
+<div id="logModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('logModal')">&times;</span>
+        <h2>Registro de Emociones</h2>
+        <ul id="emotion-log-list"></ul>
+    </div>
+</div>
+
 <script>
+let selectedEmotion = '';
+
 function showActivityDetails(activityName, activityDetails) {
     document.getElementById('modal-activity-name').innerText = activityName;
     document.getElementById('modal-activity-details').innerText = activityDetails.replace(/\\n/g, '\n');
     document.getElementById('activityModal').style.display = "block";
 }
 
-function closeModal() {
-    document.getElementById('activityModal').style.display = "none";
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = "none";
 }
 
 function scrollCarousel(direction) {
@@ -70,6 +91,47 @@ function scrollCarousel(direction) {
         top: 0,
         left: scrollAmount * direction,
         behavior: 'smooth'
+    });
+}
+
+function confirmEmotion(emotion) {
+    selectedEmotion = emotion;
+    document.getElementById('modal-emotion-name').innerText = emotion;
+    document.getElementById('emotionModal').style.display = "block";
+}
+
+function saveEmotion() {
+    fetch('{% url "save_emotion" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: JSON.stringify({ emotion: selectedEmotion })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Emoción guardada exitosamente');
+        } else {
+            alert(data.error);
+        }
+        closeModal('emotionModal');
+    });
+}
+
+function showEmotionLog() {
+    fetch('{% url "emotion_log" %}')
+    .then(response => response.json())
+    .then(data => {
+        const logList = document.getElementById('emotion-log-list');
+        logList.innerHTML = '';
+        data.emotions.forEach(entry => {
+            const listItem = document.createElement('li');
+            listItem.innerText = `${entry.date}: ${entry.emotion}`;
+            logList.appendChild(listItem);
+        });
+        document.getElementById('logModal').style.display = "block";
     });
 }
 </script>
