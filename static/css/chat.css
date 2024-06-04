@@ -1,8 +1,8 @@
 /* Base styles for chat container */
 .chat-container {
-    width: 100%; /* Responsive width */
-    max-width: 1250px; /* Adjusted width from your design */
-    height: 574px; /* Adjusted height from your design */
+    width: 100%;
+    max-width: 1250px;
+    height: 574px;
     margin: 20px auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
@@ -15,7 +15,7 @@
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: transparent; /* Corrected to 'transparent' instead of 'none' */
+    background-color: transparent;
     border-radius: 15px;
     font-family: 'Montaser Arabic', sans-serif;
     padding: 10px;
@@ -24,30 +24,30 @@
 
 /* General message styling */
 .chat-message {
-    display: block; /* Ensure messages display as block for proper stacking */
-    clear: both; /* Clear floats */
+    display: block;
+    clear: both;
     padding: 8px 16px;
     margin-bottom: 4px;
     border-radius: 12px;
-    width: auto; /* Auto width based on content */
+    width: auto;
 }
 
 /* Specific styling for other users' messages */
 .ai-message {
     background-color: #BBF6DB;
-    text-align: left; /* Align text left for other users */
-    float: left; /* Float left */
+    text-align: left;
+    float: left;
     font-family: 'Montaser Arabic', sans-serif;
-    max-width: 60%; /* Limit width to prevent full width stretching */
+    max-width: 60%;
 }
 
 /* Specific styling for user messages */
 .user-message {
-    background-color: #d6b7f9; /* Color for user messages */
-    text-align: right; /* Align text right for the user */
-    float: right; /* Float right */
+    background-color: #d6b7f9;
+    text-align: right;
+    float: right;
     font-family: 'Montaser Arabic', sans-serif;
-    max-width: 60%; /* Limit width to prevent full width stretching */
+    max-width: 60%;
 }
 
 .no-messages {
@@ -57,45 +57,56 @@
 
 .message-input {
     display: flex;
+    flex-direction: column;
     padding: 10px;
     align-items: center;
     font-family: 'Montaser Arabic', sans-serif;
-    width: 100%; /* Ensure the container takes full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    gap: 10px; /* Adds space between the input field and the send button */
+    width: 100%;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .input-message {
-    flex-grow: 1; /* Allows the input field to take up all available space */
-    border: 2px solid white; /* Adds border to make the input field distinct, adjust color as necessary */
+    width: 100%;
+    border: 2px solid white;
     border-radius: 25px;
     padding: 8px 16px;
     background-color: #19D8B6;
 }
 
 .send-button {
-    flex-shrink: 0; /* Prevent the button from shrinking */
     padding: 8px 16px;
     background-color: #864499;
     font-family: 'Montaser Arabic', sans-serif;
     color: white;
     border-radius: 25px;
-    border: none; /* Removes border if present */
+    border: none;
     cursor: pointer;
 }
-
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .chat-container {
-        height: auto; /* Make height dynamic */
+        height: auto;
     }
 
     .chat-messages {
-        height: 400px; /* Adjusted height for smaller screens */
+        height: 400px;
     }
 
     .chat-message {
-        max-width: 75%; /* Increase width on small screens for better visibility */
+        max-width: 75%;
     }
 }
