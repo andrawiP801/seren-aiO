@@ -15,28 +15,27 @@
         <div class="calendar-section">
             <img src="{% static 'images/calendar.png' %}" alt="Calendar Icon" class="calendar-icon">
         </div>
-        <div class="emotional-buttons-carousel-container">
-            <button class="carousel-button prev" onclick="scrollCarousel(-1)">&#9664;</button>
-            <div class="emotional-buttons-carousel" id="carousel">
-                <button class="emotion-button joy">Alegría</button>
-                <button class="emotion-button sadness">Tristeza</button>
-                <button class="emotion-button anger">Furia</button>
-                <button class="emotion-button disgust">Desagrado</button>
-                <button class="emotion-button fear">Miedo</button>
-                <button class="emotion-button surprise">Sorpresa</button>
-                <button class="emotion-button calm">Calma</button>
-                <button class="emotion-button anxiety">Ansiedad</button>
-                <button class="emotion-button love">Amor</button>
-            </div>
-            <button class="carousel-button next" onclick="scrollCarousel(1)">&#9654;</button>
-        </div>
         <div class="recommendation-section">
-            <h2>Recomendacion de Actividad</h2>
-            <div class="activity-recommendation" id="activity-recommendation" 
-            onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
+            <h2>Recomendación de Actividad</h2>
+            <div class="activity-recommendation" id="activity-recommendation" onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
                 {{ activity }}
             </div>
         </div>
+    </div>
+    <div class="emotional-buttons-carousel-container">
+        <button class="carousel-button prev" onclick="scrollCarousel(-1)">&#9664;</button>
+        <div class="emotional-buttons-carousel" id="carousel">
+            <button class="emotion-button joy">Alegría</button>
+            <button class="emotion-button sadness">Tristeza</button>
+            <button class="emotion-button anger">Furia</button>
+            <button class="emotion-button disgust">Desagrado</button>
+            <button class="emotion-button fear">Miedo</button>
+            <button class="emotion-button surprise">Sorpresa</button>
+            <button class="emotion-button calm">Calma</button>
+            <button class="emotion-button anxiety">Ansiedad</button>
+            <button class="emotion-button love">Amor</button>
+        </div>
+        <button class="carousel-button next" onclick="scrollCarousel(1)">&#9654;</button>
     </div>
 </div>
 

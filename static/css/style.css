@@ -600,7 +600,7 @@ header.main-header {
 
 .emotional-state-container .main-content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     margin: 20px 0;
 }
@@ -614,7 +614,7 @@ header.main-header {
 
 .emotional-state-container .recommendation-section {
     text-align: center;
-    margin-top: 20px;
+    margin-left: 20px;
 }
 
 .emotional-state-container .recommendation-section h2 {
@@ -640,9 +640,10 @@ header.main-header {
 .emotional-state-container .emotional-buttons-carousel-container {
     display: flex;
     align-items: center;
-    width: 300px; /* Match the width of the calendar */
+    width: 320px; /* Slightly larger to accommodate arrows */
     overflow: hidden;
     position: relative;
+    margin: 0 auto;
 }
 
 .emotional-state-container .emotional-buttons-carousel {
@@ -664,7 +665,7 @@ header.main-header {
     padding: 10px 20px;
     margin: 0 5px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     flex: 0 0 auto;
 }
 
@@ -713,6 +714,7 @@ header.main-header {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1;
 }
 
 .carousel-button.prev {
