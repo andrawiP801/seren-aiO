@@ -1,8 +1,8 @@
 /* Base styles for chat container */
 .chat-container {
     width: 100%; /* Responsive width */
-    max-width: 988px; /* Adjusted width from your design */
-    height: 569px; /* Adjusted height from your design */
+    max-width: 1250px; /* Adjusted width from your design */
+    height: 574px; /* Adjusted height from your design */
     margin: 20px auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
@@ -15,7 +15,7 @@
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: #E8F5E9;
+    background-color: none;
     border-radius: 15px;
     padding: 10px;
     margin: 10px;
@@ -55,21 +55,25 @@
 .message-input {
     display: flex;
     padding: 10px;
+    align-items: center;  /* Ensure alignment of elements inside this div */
+    gap: 10px;            /* Adds space between the input field and the send button */
 }
 
 .input-message {
-    flex-grow: 1;
-    border: none;
+    flex-grow: 1;        /* Allows the input field to take up all available space */
+    border: 2px solid white;  /* Adds border to make the input field distinct, adjust color as necessary */
     border-radius: 25px;
     padding: 8px 16px;
-    background-color: #f0f0f0;
+    background-color: #19D8B6;
 }
 
 .send-button {
+    min-width: 100px;    /* Ensures the send button has a reasonable width */
     padding: 8px 16px;
     background-color: #864499;
     color: white;
     border-radius: 25px;
+    border: none;        /* Removes border if present */
     cursor: pointer;
 }
 
