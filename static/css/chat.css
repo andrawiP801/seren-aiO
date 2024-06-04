@@ -56,7 +56,7 @@
     background-color: #FFF;
     border-top: 2px solid #19D8B6;
     display: flex;
-    justify-content: center;
+    justify-content: right;
 }
 
 .forum-input-form {
