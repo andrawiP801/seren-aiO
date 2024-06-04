@@ -1,38 +1,42 @@
 /* Base styles for chat container */
 .chat-container {
-    width: 100%;
-    max-width: 685px; /* Width as per your image */
-    height: 386px; /* Height as per your image */
-    margin: 20px auto;
-    padding: 10px;
-    border: 2px solid #19D8B6;
+    width: 714px; /* Adjusted width from your new design */
+    height: 456px; /* Adjusted height from your new design */
+    margin: auto;
+    border: 8px solid #19D8B6;
     border-radius: 20px;
-    background-color: #FFFFFF;
+    background-color: #FFF;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
 
+.chat-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: none;
-    border-radius: 8px;
+    background-color: #E8F5E9;
+    border-radius: 15px;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px; /* Adjust margin to provide space around the messages area */
 }
 
 .chat-message {
     padding: 8px 16px;
     margin-bottom: 4px;
-    border-radius: 20px;
-    background-color: #BBF6DB; 
-    max-width: 60%;
+    border-radius: 12px;
+    background-color: #BBF6DB; /* Adjust to a lighter shade if needed */
+    max-width: 80%; /* Allow messages to take more space */
 }
 
 .user-message {
-    background-color: #D6B8F6; 
-    align-self: flex-end;
+    background-color: #d6b7f9; /* Color for user messages */
+    justify-content: flex-end;
+    text-align: right;
 }
 
 .no-messages {
@@ -42,23 +46,21 @@
 
 .message-input {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    padding: 10px; /* Provide padding inside the input area */
 }
 
 .input-message {
     flex-grow: 1;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 8px 16px;
-    background-color: #19D8B6;
+    background-color: #f0f0f0;
 }
 
 .send-button {
     padding: 8px 16px;
     background-color: #864499;
     color: white;
-    border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
 }
