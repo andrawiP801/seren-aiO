@@ -15,7 +15,7 @@
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: none;
+    background-color: transparent; /* Corrected to 'transparent' instead of 'none' */
     border-radius: 15px;
     padding: 10px;
     margin: 10px;
