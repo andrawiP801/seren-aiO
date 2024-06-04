@@ -56,13 +56,12 @@
     background-color: #FFF;
     border-top: 2px solid #19D8B6;
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }
 
 .forum-input-form {
     display: flex;
     width: 100%;
-    max-width: 800px;
     align-items: center;
 }
 
@@ -71,7 +70,6 @@
     border: 2px solid #19D8B6;
     border-radius: 25px;
     padding: 10px 20px;
-    margin-right: 10px;
     font-family: 'Montaser Arabic', sans-serif;
     font-size: 16px;
     background-color: #19D8B6;
@@ -87,6 +85,7 @@
     cursor: pointer;
     font-family: 'Montaser Arabic', sans-serif;
     font-size: 16px;
+    margin-left: 10px; /* Espacio entre el input y el botón */
 }
 
 /* Responsive adjustments */
@@ -106,5 +105,9 @@
     .forum-input-message {
         margin-right: 0;
         margin-bottom: 10px;
+    }
+
+    .forum-send-button {
+        margin-left: 0;
     }
 }
