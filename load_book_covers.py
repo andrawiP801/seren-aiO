@@ -4,7 +4,7 @@ from django.core.files import File
 from myproject.settings import MEDIA_ROOT
 
 # Configura Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SerenAI.settings')
 django.setup()
 
 from chatai.models import Book
