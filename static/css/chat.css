@@ -59,9 +59,10 @@
     display: flex;
     padding: 10px;
     align-items: center;
-    font-family: 'Montaser Arabic', sans-serif; 
+    font-family: 'Montaser Arabic', sans-serif;
+    width: 100%; /* Make sure the container takes full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
     gap: 10px; /* Adds space between the input field and the send button */
-    width: 100%; /* Ensure the input field and button take the full width of the container */
 }
 
 .input-message {
@@ -73,7 +74,6 @@
 }
 
 .send-button {
-    flex-shrink: 0; /* Prevent the button from shrinking */
     min-width: 100px; /* Ensures the send button has a reasonable width */
     padding: 8px 16px;
     background-color: #864499;
@@ -82,6 +82,7 @@
     border-radius: 25px;
     border: none; /* Removes border if present */
     cursor: pointer;
+    flex-shrink: 0; /* Prevent the button from shrinking */
 }
 
 /* Responsive adjustments */
