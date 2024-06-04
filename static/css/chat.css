@@ -1,7 +1,7 @@
 /* Base styles for chat container */
 .chat-container {
-    width: 714px; /* Adjusted width from your new design */
-    height: 456px; /* Adjusted height from your new design */
+    width: 1250px; /* Adjusted width from your new design */
+    height: 574px; /* Adjusted height from your new design */
     margin: auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
@@ -9,11 +9,6 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-}
-
-.chat-header {
-    text-align: center;
-    margin-bottom: 10px;
 }
 
 .chat-messages {
