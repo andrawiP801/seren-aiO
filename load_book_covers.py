@@ -10,7 +10,7 @@ django.setup()
 from chatai.models import Book
 
 # Define la carpeta donde están tus imágenes
-covers_folder = os.path.join(settings.MEDIA_ROOT, 'book_covers')
+covers_folder = os.path.join(settings.STATIC_ROOT, 'book_covers')
 
 # Lista de libros y sus respectivas portadas y URLs
 books_data = [
