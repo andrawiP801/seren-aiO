@@ -124,6 +124,15 @@ header.main-header {
 .menu-open-div a {
     font-size: 25px;
     margin: 0;
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black; /* or any color you prefer */
+    white-space: nowrap; /* Keeps the text on one line */
+}
+
+.menu-open-div a:hover {
+    background-color: #f0f0f0;
 }
 
 .menu-ais {
