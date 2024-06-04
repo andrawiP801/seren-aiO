@@ -13,11 +13,11 @@
 <div class="emotional-state-container">
     <div class="main-content">
         <div class="calendar-section">
-            <img src="{% static 'images/calendar_icon.png' %}" alt="Calendar Icon" class="calendar-icon">
+            <img src="{% static 'images/calendar.png' %}" alt="Calendar Icon" class="calendar-icon">
         </div>
         <div class="recommendation-section">
             <h2>Recomendación Actividad</h2>
-            <div class="activity-recommendation" id="activity-recommendation" onclick="showActivityDetails('{{ activity }}', '{{ details }}')">
+            <div class="activity-recommendation" id="activity-recommendation" onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
                 {{ activity }}
             </div>
         </div>
@@ -43,7 +43,7 @@
 <script>
 function showActivityDetails(activityName, activityDetails) {
     document.getElementById('modal-activity-name').innerText = activityName;
-    document.getElementById('modal-activity-details').innerText = activityDetails;
+    document.getElementById('modal-activity-details').innerText = activityDetails.replace(/\\n/g, '\n');
     document.getElementById('activityModal').style.display = "block";
 }
 
