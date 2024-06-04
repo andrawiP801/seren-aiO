@@ -2,7 +2,7 @@
 .forum-chat-container {
     width: 100%;
     max-width: 1250px;
-    height: auto;
+    height: 560px;
     margin: 20px auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
