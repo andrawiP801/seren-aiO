@@ -32,8 +32,12 @@
         </div>
         <div class="recommendation-section">
             <h2>Recomendación Actividad</h2>
-            <div class="activity-recommendation" id="activity-recommendation" onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
+            <div class="activity-recommendation" id="activity-recommendation" 
+            onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
                 {{ activity }}
+            </div>
+            <div class="main-body-image">
+                <img src="{% static 'images/logo.png' %}" alt="Logo">
             </div>
         </div>
     </div>
