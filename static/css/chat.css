@@ -1,12 +1,12 @@
 /* Base styles for chat container */
 .chat-container {
-    width: 100%; /* Make it responsive */
-    max-width: 1250px; /* Max width */
-    height: 574px;
+    width: 100%; /* Responsive width */
+    max-width: 988px; /* Adjusted width from your design */
+    height: 569px; /* Adjusted height from your design */
     margin: 20px auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
-    background-color: none;
+    background-color: #FFF;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: none;
+    background-color: #E8F5E9;
     border-radius: 15px;
     padding: 10px;
     margin: 10px;
@@ -23,22 +23,28 @@
 
 /* General message styling */
 .chat-message {
+    display: block; /* Ensure messages display as block for proper stacking */
+    clear: both; /* Clear floats */
     padding: 8px 16px;
     margin-bottom: 4px;
     border-radius: 12px;
-    display: inline-block; /* Makes width only as wide as the content */
+    width: auto; /* Auto width based on content */
 }
 
 /* Specific styling for other users' messages */
 .ai-message {
     background-color: #BBF6DB;
     text-align: left; /* Align text left for other users */
+    float: left; /* Float left */
+    max-width: 60%; /* Limit width to prevent full width stretching */
 }
 
 /* Specific styling for user messages */
 .user-message {
-    background-color: #d6b7f9;
+    background-color: #d6b7f9; /* Color for user messages */
     text-align: right; /* Align text right for the user */
+    float: right; /* Float right */
+    max-width: 60%; /* Limit width to prevent full width stretching */
 }
 
 .no-messages {
@@ -56,7 +62,7 @@
     border: none;
     border-radius: 25px;
     padding: 8px 16px;
-    background-color: #19D8B6;
+    background-color: #f0f0f0;
 }
 
 .send-button {
@@ -70,11 +76,14 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .chat-container {
-        width: 100%; /* Full width on smaller screens */
         height: auto; /* Make height dynamic */
     }
 
     .chat-messages {
-        height: 400px; /* Reduced height for smaller screens */
+        height: 400px; /* Adjusted height for smaller screens */
+    }
+
+    .chat-message {
+        max-width: 75%; /* Increase width on small screens for better visibility */
     }
 }
