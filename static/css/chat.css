@@ -60,7 +60,7 @@
     padding: 10px;
     align-items: center;
     font-family: 'Montaser Arabic', sans-serif;
-    width: 100%; /* Make sure the container takes full width */
+    width: 100%; /* Ensure the container takes full width */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     gap: 10px; /* Adds space between the input field and the send button */
 }
@@ -74,7 +74,7 @@
 }
 
 .send-button {
-    min-width: 100px; /* Ensures the send button has a reasonable width */
+    flex-shrink: 0; /* Prevent the button from shrinking */
     padding: 8px 16px;
     background-color: #864499;
     font-family: 'Montaser Arabic', sans-serif;
@@ -82,8 +82,8 @@
     border-radius: 25px;
     border: none; /* Removes border if present */
     cursor: pointer;
-    flex-shrink: 0; /* Prevent the button from shrinking */
 }
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
