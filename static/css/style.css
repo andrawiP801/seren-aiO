@@ -600,8 +600,8 @@ header.main-header {
 
 .emotional-state-container .main-content {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     margin: 20px 0;
 }
 
@@ -609,7 +609,7 @@ header.main-header {
     width: 300px;
     height: 300px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .emotional-state-container .recommendation-section {
@@ -637,29 +637,29 @@ header.main-header {
     cursor: pointer;
 }
 
-.emotional-state-container .emotional-buttons-carousel-container {
+.emotional-buttons-carousel-container {
     display: flex;
     align-items: center;
     width: 320px; /* Slightly larger to accommodate arrows */
     overflow: hidden;
     position: relative;
     margin: 0 auto;
+    margin-top: 20px; /* Ensure it is below the calendar */
 }
 
-.emotional-state-container .emotional-buttons-carousel {
+.emotional-buttons-carousel {
     display: flex;
     overflow-x: auto;
-    margin-top: 20px;
     padding: 10px 0;
     scroll-behavior: smooth;
     flex: 1;
 }
 
-.emotional-state-container .emotional-buttons-carousel::-webkit-scrollbar {
+.emotional-buttons-carousel::-webkit-scrollbar {
     display: none;
 }
 
-.emotional-state-container .emotion-button {
+.emotion-button {
     background-color: #e0e0e0;
     color: black;
     padding: 10px 20px;
@@ -669,39 +669,39 @@ header.main-header {
     flex: 0 0 auto;
 }
 
-.emotional-state-container .emotion-button.joy {
+.emotion-button.joy {
     background-color: #ffeb3b;
 }
 
-.emotional-state-container .emotion-button.sadness {
+.emotion-button.sadness {
     background-color: #90caf9;
 }
 
-.emotional-state-container .emotion-button.anger {
+.emotion-button.anger {
     background-color: #e57373;
 }
 
-.emotional-state-container .emotion-button.disgust {
+.emotion-button.disgust {
     background-color: #a5d6a7;
 }
 
-.emotional-state-container .emotion-button.fear {
+.emotion-button.fear {
     background-color: #ffccbc;
 }
 
-.emotional-state-container .emotion-button.surprise {
+.emotion-button.surprise {
     background-color: #ffb74d;
 }
 
-.emotional-state-container .emotion-button.calm {
+.emotion-button.calm {
     background-color: #aed581;
 }
 
-.emotional-state-container .emotion-button.anxiety {
+.emotion-button.anxiety {
     background-color: #ff8a65;
 }
 
-.emotional-state-container .emotion-button.love {
+.emotion-button.love {
     background-color: #f06292;
 }
 
