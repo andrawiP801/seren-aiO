@@ -1,102 +1,110 @@
-/* Base styles for chat container */
-.chat-container {
+/* Base styles for forum chat container */
+.forum-chat-container {
     width: 100%;
     max-width: 1250px;
-    height: 574px;
+    height: auto;
     margin: 20px auto;
     border: 8px solid #19D8B6;
     border-radius: 20px;
     background-color: #FFF;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
 }
 
-.chat-messages {
+.forum-chat-messages {
     flex-grow: 1;
     overflow-y: auto;
-    background-color: transparent;
-    border-radius: 15px;
+    padding: 20px;
     font-family: 'Montaser Arabic', sans-serif;
-    padding: 10px;
-    margin: 10px;
 }
 
 /* General message styling */
-.chat-message {
-    display: block;
+.forum-chat-message {
     clear: both;
-    padding: 8px 16px;
-    margin-bottom: 4px;
-    border-radius: 12px;
-    width: auto;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    max-width: 60%;
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-/* Specific styling for other users' messages */
-.ai-message {
-    background-color: #BBF6DB;
+/* Specific styling for AI messages */
+.forum-ai-message {
+    background-color: var(--secondary-color);
     text-align: left;
     float: left;
-    font-family: 'Montaser Arabic', sans-serif;
-    max-width: 60%;
 }
 
 /* Specific styling for user messages */
-.user-message {
-    background-color: #d6b7f9;
+.forum-user-message {
+    background-color: var(--primary-color);
     text-align: right;
     float: right;
-    font-family: 'Montaser Arabic', sans-serif;
-    max-width: 60%;
 }
 
-.no-messages {
+.forum-no-messages {
     text-align: center;
     color: #888;
+    font-family: 'Montaser Arabic', sans-serif;
 }
 
-.message-input {
-    display: flex;
-    justify-content: space-between;
+/* Message input styling */
+.forum-message-input {
     padding: 10px;
-    align-items: center;
-    font-family: 'Montaser Arabic', sans-serif;
+    background-color: #FFF;
+    border-top: 2px solid #19D8B6;
+    display: flex;
+    justify-content: center;
+}
+
+.forum-input-form {
+    display: flex;
     width: 100%;
-    box-sizing: border-box;
+    max-width: 800px;
+    align-items: center;
 }
 
-.input-message {
+.forum-input-message {
     flex-grow: 1;
-    border: 2px solid white;
+    border: 2px solid #19D8B6;
     border-radius: 25px;
-    padding: 8px 16px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-family: 'Montaser Arabic', sans-serif;
+    font-size: 16px;
     background-color: #19D8B6;
-    margin-right: 10px; /* Space between input and button */
+    color: #FFF;
 }
 
-.send-button {
-    padding: 8px 16px;
+.forum-send-button {
+    padding: 10px 20px;
     background-color: #864499;
-    font-family: 'Montaser Arabic', sans-serif;
     color: white;
-    border-radius: 25px;
     border: none;
+    border-radius: 25px;
     cursor: pointer;
-    flex-shrink: 0; /* Prevent the button from shrinking */
-    align-self: flex-end; /* Align button to the end of the input container */
+    font-family: 'Montaser Arabic', sans-serif;
+    font-size: 16px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .chat-container {
+    .forum-chat-container {
         height: auto;
     }
 
-    .chat-messages {
-        height: 400px;
+    .forum-chat-message {
+        max-width: 75%;
     }
 
-    .chat-message {
-        max-width: 75%;
+    .forum-input-form {
+        flex-direction: column;
+    }
+
+    .forum-input-message {
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 }
