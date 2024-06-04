@@ -1,6 +1,7 @@
 import os
 import django
 from django.core.files import File
+from django.core.files.base import ContentFile
 from SerenAI.settings import MEDIA_ROOT
 
 # Configura Django
@@ -19,7 +20,7 @@ books_data = [
     {'title': 'Mujeres que corren con los lobos', 'author': 'Clarissa Pinkola Estés', 'cover': 'mujeres_que_corren_con_los_lobos.jpg', 'url': 'https://example.com/book1'},
     {'title': 'El camino del artista', 'author': 'Julia Cameron', 'cover': 'el_camino_del_artista.jpg', 'url': 'https://example.com/book1'},
     {'title': 'Las cuatro revelaciones', 'author': 'Alberto Villoldo', 'cover': 'las_cuatro_revelaciones.jpg', 'url': 'https://example.com/book1'},
-    {'title': 'El monje que vendió su Ferrari', 'author': 'Robin Sharma', 'cover': 'el_monge_que_vendio_su_ferrari.jpg', 'url': 'https://example.com/book1'},
+    {'title': 'El monje que vendió su Ferrari', 'author': 'Robin Sharma', 'cover': 'el_monje_que_vendio_su_ferrari.jpg', 'url': 'https://example.com/book1'},
 ]
 
 for book_data in books_data:
@@ -32,7 +33,8 @@ for book_data in books_data:
         
         # Abre el archivo de imagen y actualiza el campo cover_image del libro
         with open(cover_path, 'rb') as f:
-            book.cover_image.save(book_data['cover'], File(f), save=True)
+            content = ContentFile(f.read())
+            book.cover_image.save(book_data['cover'], content, save=True)
         
         # Actualiza el campo book_url
         book.book_url = book_data['url']
