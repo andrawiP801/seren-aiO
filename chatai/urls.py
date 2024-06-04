@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls.static import static
 from .views import home_page, login_page, signup_page, logout_view, main_page, chat_page, chat_query, profile_page, books_page, book_detail, foro_page, emotional_state, save_emotion, emotion_log
 
 urlpatterns = [
@@ -18,4 +17,4 @@ urlpatterns = [
     path('emotional-state/', emotional_state, name='emotional_state'),
     path('save_emotion/', save_emotion, name='save_emotion'),
     path('emotion_log/', emotion_log, name='emotion_log'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
