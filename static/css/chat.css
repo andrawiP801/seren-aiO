@@ -58,28 +58,29 @@
 .message-input {
     display: flex;
     padding: 10px;
-    align-items: center;        /* Ensure alignment of elements inside this div */
+    align-items: center;
     font-family: 'Montaser Arabic', sans-serif; 
-    gap: 10px;            /* Adds space between the input field and the send button */
+    gap: 10px; /* Adds space between the input field and the send button */
+    width: 100%; /* Ensure the input field and button take the full width of the container */
 }
 
 .input-message {
-    flex-grow: 1;        /* Allows the input field to take up all available space */
-    border: 2px solid white;  /* Adds border to make the input field distinct, adjust color as necessary */
+    flex-grow: 1; /* Allows the input field to take up all available space */
+    border: 2px solid white; /* Adds border to make the input field distinct, adjust color as necessary */
     border-radius: 25px;
     padding: 8px 16px;
     background-color: #19D8B6;
-    gap: 10px;
 }
 
 .send-button {
-    min-width: 100px;    /* Ensures the send button has a reasonable width */
+    flex-shrink: 0; /* Prevent the button from shrinking */
+    min-width: 100px; /* Ensures the send button has a reasonable width */
     padding: 8px 16px;
     background-color: #864499;
     font-family: 'Montaser Arabic', sans-serif;
     color: white;
     border-radius: 25px;
-    border: none;        /* Removes border if present */
+    border: none; /* Removes border if present */
     cursor: pointer;
 }
 
