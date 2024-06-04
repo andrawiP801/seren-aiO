@@ -640,24 +640,30 @@ h2 {
     text-align: center;
 }
 
-.emotional-state-container .recommendation-section h2{
+.emotional-state-container .recommendation-section h2 {
     background-color: #8e24aa;
     color: white;
-    padding: 10px;
-    font-size: 18px;
+    padding: 15px;
+    font-size: 24px;
     border-radius: 10px;
 }
 
 .emotional-state-container .recommendation-section .activity-recommendation {
     margin-top: 10px;
-    padding: 15px;
+    padding: 20px;
     background-color: #f3e5f5;
     border: 1px solid #ce93d8;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     color: #6a1b9a;
     cursor: pointer;
+}
+
+.emotional-state-container .emotional-buttons-carousel-container {
+    width: 300px; /* Match the width of the calendar */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 .emotional-state-container .emotional-buttons-carousel {
@@ -665,6 +671,7 @@ h2 {
     overflow-x: auto;
     margin-top: 20px;
     padding: 10px 0;
+    scroll-behavior: smooth;
 }
 
 .emotional-state-container .emotional-buttons-carousel::-webkit-scrollbar {
@@ -675,7 +682,7 @@ h2 {
     background-color: #e0e0e0;
     color: black;
     padding: 10px 20px;
-    margin: 0 10px;
+    margin: 0 5px;
     border: none;
     border-radius: 5px;
     flex: 0 0 auto;
