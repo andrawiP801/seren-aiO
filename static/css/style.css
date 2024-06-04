@@ -631,8 +631,9 @@ h2 {
 }
 
 .emotional-state-container .calendar-section .calendar-icon {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
 }
 
 .emotional-state-container .recommendation-section {
@@ -643,7 +644,7 @@ h2 {
     background-color: #8e24aa;
     color: white;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .emotional-state-container .recommendation-section .activity-recommendation {
@@ -651,17 +652,22 @@ h2 {
     padding: 15px;
     background-color: #f3e5f5;
     border: 1px solid #ce93d8;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 18px;
     font-weight: bold;
     color: #6a1b9a;
     cursor: pointer;
 }
 
-.emotional-state-container .emotional-buttons {
+.emotional-state-container .emotional-buttons-carousel {
     display: flex;
-    justify-content: center;
+    overflow-x: auto;
     margin-top: 20px;
+    padding: 10px 0;
+}
+
+.emotional-state-container .emotional-buttons-carousel::-webkit-scrollbar {
+    display: none;
 }
 
 .emotional-state-container .emotion-button {
@@ -671,6 +677,7 @@ h2 {
     margin: 0 10px;
     border: none;
     border-radius: 5px;
+    flex: 0 0 auto;
 }
 
 .emotional-state-container .emotion-button.joy {
@@ -691,6 +698,22 @@ h2 {
 
 .emotional-state-container .emotion-button.fear {
     background-color: #ffccbc;
+}
+
+.emotional-state-container .emotion-button.surprise {
+    background-color: #ffb74d;
+}
+
+.emotional-state-container .emotion-button.calm {
+    background-color: #aed581;
+}
+
+.emotional-state-container .emotion-button.anxiety {
+    background-color: #ff8a65;
+}
+
+.emotional-state-container .emotion-button.love {
+    background-color: #f06292;
 }
 
 /* Modal Styles */

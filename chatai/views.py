@@ -204,7 +204,16 @@ def emotional_state(request):
         "Ejercicio ligero": "1. Realiza una caminata de 10 minutos.\n2. Haz estiramientos suaves.\n3. Realiza movimientos de yoga simples.",
         "Escuchar música relajante": "1. Encuentra una lista de reproducción de música relajante.\n2. Siéntate en un lugar cómodo.\n3. Cierra los ojos y concéntrate en la música.",
         "Leer un libro": "1. Escoge un libro que te guste.\n2. Encuentra un lugar tranquilo para leer.\n3. Dedica al menos 15 minutos a la lectura.",
-        "Tomar un baño caliente": "1. Llena la bañera con agua caliente.\n2. Añade sales de baño o aceites esenciales.\n3. Relájate en el agua durante 20 minutos."
+        "Tomar un baño caliente": "1. Llena la bañera con agua caliente.\n2. Añade sales de baño o aceites esenciales.\n3. Relájate en el agua durante 20 minutos.",
+        "Dibujar o pintar": "1. Prepara tus materiales de dibujo o pintura.\n2. Encuentra un lugar tranquilo.\n3. Deja que tu creatividad fluya durante al menos 30 minutos.",
+        "Escribir un diario": "1. Encuentra un lugar tranquilo.\n2. Abre tu diario o un cuaderno.\n3. Escribe tus pensamientos y sentimientos durante 15 minutos.",
+        "Practicar yoga": "1. Despliega tu esterilla de yoga.\n2. Realiza una serie de posturas suaves.\n3. Concéntrate en tu respiración y en estirarte.",
+        "Salir a caminar": "1. Ponte ropa y calzado cómodo.\n2. Sal a caminar por un parque o tu vecindario.\n3. Disfruta del aire libre durante al menos 20 minutos.",
+        "Jugar con una mascota": "1. Dedica tiempo a jugar con tu mascota.\n2. Utiliza juguetes o simplemente acaríciala.\n3. Disfruta del momento.",
+        "Ver una película": "1. Elige una película que te guste.\n2. Prepara unas palomitas o tu snack favorito.\n3. Relájate y disfruta de la película.",
+        "Hacer jardinería": "1. Encuentra un espacio en tu jardín o balcón.\n2. Planta algunas flores o cuida tus plantas.\n3. Dedica al menos 30 minutos.",
+        "Cocinar una receta nueva": "1. Elige una receta que te interese.\n2. Reúne los ingredientes necesarios.\n3. Cocina y disfruta del proceso.",
+        "Hacer una sesión de estiramientos": "1. Encuentra un espacio cómodo.\n2. Realiza una serie de estiramientos suaves.\n3. Concéntrate en relajar tus músculos.",
     }
     
     selected_activity, activity_details = random.choice(list(activities.items()))
