@@ -24,12 +24,8 @@
     <div class="message-input">
         <form method="post">
             {% csrf_token %}
-            <div class="input-container">
-                <input type="text" name="message" class="input-message" placeholder="Escribe un mensaje...">
-            </div>
-            <div class="button-container">
-                <button type="submit" class="send-button">Enviar</button>
-            </div>
+            <input type="text" name="message" class="input-message" placeholder="Escribe un mensaje...">
+            <button type="submit" class="send-button">Enviar</button>
         </form>
     </div>
 </div>

@@ -57,7 +57,7 @@
 
 .message-input {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     padding: 10px;
     align-items: center;
     font-family: 'Montaser Arabic', sans-serif;
@@ -66,20 +66,8 @@
     gap: 10px;
 }
 
-.input-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
 .input-message {
-    width: 100%;
+    flex-grow: 1;
     border: 2px solid white;
     border-radius: 25px;
     padding: 8px 16px;
