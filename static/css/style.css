@@ -601,7 +601,7 @@ header.main-header {
 .emotional-state-container .main-content {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin: 20px 0;
 }
 
@@ -609,6 +609,7 @@ header.main-header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 40px; /* Increased spacing */
 }
 
 .emotional-state-container .calendar-section .calendar-icon {
@@ -620,7 +621,6 @@ header.main-header {
 
 .emotional-state-container .recommendation-section {
     text-align: center;
-    margin-left: 20px;
 }
 
 .emotional-state-container .recommendation-section h2 {
@@ -646,7 +646,7 @@ header.main-header {
 .emotional-buttons-carousel-container {
     display: flex;
     align-items: center;
-    width: 300px; /* Same width as the calendar */
+    width: 320px; /* Slightly larger to accommodate arrows */
     overflow: hidden;
     position: relative;
     margin: 0 auto;

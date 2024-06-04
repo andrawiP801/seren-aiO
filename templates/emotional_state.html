@@ -13,7 +13,7 @@
 <div class="emotional-state-container">
     <div class="main-content">
         <div class="calendar-section">
-            <img src="{% static 'images/calendar.png' %}" alt="Calendar Icon" class="calendar-icon">
+            <img src="{% static 'images/calendar_icon.png' %}" alt="Calendar Icon" class="calendar-icon">
             <div class="emotional-buttons-carousel-container">
                 <button class="carousel-button prev" onclick="scrollCarousel(-1)">&#9664;</button>
                 <div class="emotional-buttons-carousel" id="carousel">
@@ -32,8 +32,7 @@
         </div>
         <div class="recommendation-section">
             <h2>Recomendación Actividad</h2>
-            <div class="activity-recommendation" id="activity-recommendation" 
-            onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
+            <div class="activity-recommendation" id="activity-recommendation" onclick="showActivityDetails('{{ activity }}', `{{ details|escapejs }}`)">
                 {{ activity }}
             </div>
         </div>
