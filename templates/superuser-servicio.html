@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/servicio.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Mensajes de Usuarios</h2>
-<div class="user-messages">
-    <!-- Lista de mensajes de usuarios -->
-</div>
+<main class="servicio-main">
+    <section class="servicio-admin-section">
+        <h2>Mensajes de Usuarios</h2>
+        <div class="user-messages servicio-messages">
+            <!-- Lista de mensajes de usuarios -->
+        </div>
+    </section>
+</main>
 {% endblock %}

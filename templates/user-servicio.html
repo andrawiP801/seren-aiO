@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/servicio.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="chat-section">
-    <div class="chat-window">
-        <div class="messages">
-            <!-- Mensajes del chat -->
+<main class="servicio-main">
+    <section class="servicio-chat-section">
+        <div class="servicio-chat-window">
+            <div class="servicio-messages">
+                <!-- Mensajes del chat -->
+            </div>
+            <div class="servicio-message-input">
+                <input type="text" placeholder="Escribe tu mensaje...">
+                <button>Enviar</button>
+            </div>
         </div>
-        <div class="message-input">
-            <input type="text" placeholder="Escribe tu mensaje...">
-            <button>Enviar</button>
+        <div class="servicio-faq-section">
+            <h2>Preguntas frecuentes</h2>
+            <ul class="servicio-faq-list">
+                <!-- Lista de FAQs -->
+            </ul>
         </div>
-    </div>
-    <div class="faq-section">
-        <h2>Preguntas frecuentes</h2>
-        <ul class="faq-list">
-            <!-- Lista de FAQs -->
-        </ul>
-    </div>
-</section>
+    </section>
+</main>
 {% endblock %}
