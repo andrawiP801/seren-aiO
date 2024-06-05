@@ -258,3 +258,10 @@ def emotion_log(request):
     ]
 
     return JsonResponse({'emotions': emotion_data})
+
+@login_required
+def servicio_page(request):
+    if request.user.is_superuser:
+        return render(request, 'superuser-servicio.html')
+    else:
+        return render(request, 'user-servicio.html')
