@@ -20,7 +20,7 @@
                                 <a href="{{ book.book_url }}" target="_blank">
                                 {% endif %}
                                     {% if book.cover_image %}
-                                    <img src="{{ book.cover_image.url }}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                    <img src="{% static book.cover_image %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
                                     {% else %}
                                     <img src="{% static 'default_cover.jpg' %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
                                     {% endif %}

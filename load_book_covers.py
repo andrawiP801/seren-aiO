@@ -1,7 +1,5 @@
 import os
 import django
-from django.core.files.base import ContentFile
-from django.conf import settings
 
 # Configura Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'SerenAI.settings')
@@ -9,8 +7,8 @@ django.setup()
 
 from chatai.models import Book
 
-# Define la carpeta donde están tus imágenes
-covers_folder = os.path.join(settings.STATIC_ROOT, 'book_covers')
+# Define la carpeta donde están tus imágenes en la carpeta static
+covers_folder = 'static/book_covers/'
 
 # Lista de libros y sus respectivas portadas y URLs
 books_data = [
@@ -27,13 +25,9 @@ for book_data in books_data:
         # Encuentra el libro en la base de datos
         book = Book.objects.get(title=book_data['title'], author=book_data['author'])
         
-        # Crea la ruta completa al archivo de la imagen
+        # Actualiza el campo cover_image del libro con la ruta relativa
         cover_path = os.path.join(covers_folder, book_data['cover'])
-        
-        # Abre el archivo de imagen y actualiza el campo cover_image del libro
-        with open(cover_path, 'rb') as f:
-            content = ContentFile(f.read(), name=book_data['cover'])
-            book.cover_image.save(book_data['cover'], content, save=True)
+        book.cover_image = cover_path
         
         # Actualiza el campo book_url
         book.book_url = book_data['url']
