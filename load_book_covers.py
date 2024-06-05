@@ -30,9 +30,8 @@ for book_data in books_data:
         # Encuentra el libro en la base de datos
         book = Book.objects.get(title=book_data['title'], author=book_data['author'])
         
-        # Actualiza el campo cover_image del libro con la ruta relativa
-        cover_path = os.path.join(covers_folder, book_data['cover'])
-        book.cover_image = cover_path
+        # Almacena solo el nombre del archivo en cover_image
+        book.cover_image = book_data['cover']
         
         # Actualiza el campo book_url
         book.book_url = book_data['url']
