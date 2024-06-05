@@ -731,6 +731,22 @@ header.main-header {
     right: 0;
 }
 
+/* Carousel controls customization */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--purple-color); /* Color morado */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-control-prev-icon {
+    background-image: none;
+}
+
+.carousel-control-next-icon {
+    background-image: none;
+}
+
 /* Modal Styles */
 .modal {
     display: none;
