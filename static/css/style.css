@@ -712,7 +712,7 @@ header.main-header {
 }
 
 .carousel-button {
-    background-color: #8e24aa;
+    background-color: #864499; /* Color morado */
     color: white;
     border: none;
     padding: 10px;
@@ -721,6 +721,12 @@ header.main-header {
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-button.prev {
@@ -731,20 +737,23 @@ header.main-header {
     right: 0;
 }
 
-/* Carousel controls customization */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: var(--purple-color); /* Color morado */
-    border-radius: 50%;
-    padding: 10px;
+.carousel-button .carousel-control-prev-icon,
+.carousel-button .carousel-control-next-icon {
+    background-image: none; /* Remove default background image */
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
 }
 
-.carousel-control-prev-icon {
-    background-image: none;
+.carousel-button .carousel-control-prev-icon {
+    transform: rotate(135deg); /* Rotate to make a left arrow */
+    -webkit-transform: rotate(135deg);
 }
 
-.carousel-control-next-icon {
-    background-image: none;
+.carousel-button .carousel-control-next-icon {
+    transform: rotate(-45deg); /* Rotate to make a right arrow */
+    -webkit-transform: rotate(-45deg);
 }
 
 /* Modal Styles */
