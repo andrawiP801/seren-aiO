@@ -712,8 +712,8 @@ header.main-header {
 }
 
 .carousel-button {
-    background-color: transparent;
-    color: #864499;
+    background-color: #8e24aa;
+    color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
