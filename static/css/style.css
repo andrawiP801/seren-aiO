@@ -756,6 +756,10 @@ header.main-header {
     -webkit-transform: rotate(-45deg);
 }
 
+.carousel-container {
+    margin-top: 50px; /* Ajusta este valor según sea necesario */
+}
+
 /* Modal Styles */
 .modal {
     display: none;
