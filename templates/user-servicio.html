@@ -1,10 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/servicio.css' %}">
-{% endblock %}
+{% block title %} Servicio Cliente - SerenAI {% endblock title %}
 
-{% block content %}
+{% block headerTitle %}
+    <div class="page-title d-none d-md-block">
+        <h2>Servicio a Cliente</h2>
+    </div>
+{% endblock headerTitle %}
+
+{% block main %}
 <main class="servicio-main">
     <section class="servicio-chat-section">
         <div class="servicio-chat-window">
@@ -24,4 +29,4 @@
         </div>
     </section>
 </main>
-{% endblock %}
+{% endblock main %}
