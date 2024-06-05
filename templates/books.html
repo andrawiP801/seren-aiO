@@ -22,7 +22,7 @@
                                     {% if book.cover_image %}
                                     <img src="{% static book.cover_image %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
                                     {% else %}
-                                    <img src="{% static 'default_cover.jpg' %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
+                                    <img src="{% static 'default_cover.png' %}" class="d-block rounded mx-2" alt="{{ book.title }}" style="width: 150px; height: 200px;">
                                     {% endif %}
                                 {% if book.book_url %}
                                 </a>
