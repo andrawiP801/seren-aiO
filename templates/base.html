@@ -69,9 +69,7 @@
     {% block main %}{% endblock main %}
 
     {% block script %}
-    <!-- Load jQuery from local -->
-    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-    <script>
+   <script>
         // Ensure jQuery is loaded before any script that uses it
         if (typeof jQuery === 'undefined') {
             console.error('jQuery not loaded');
