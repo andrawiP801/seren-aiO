@@ -35,7 +35,7 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-    var userId = "{{ request.user.id }}";  // Asigna el userId desde Django
+    var userId = "{{ request.user.id }}";  // Asigna el userId desde Django como string literal
 
     $('#send-message-form').on('submit', function(event) {
         event.preventDefault();
@@ -45,8 +45,7 @@ $(document).ready(function() {
             contentType: 'application/json',
             data: JSON.stringify({
                 'text': $('#message-input').val(),
-                'user_id': userId,
-                'csrfmiddlewaretoken': csrftoken
+                'user_id': userId
             }),
             success: function(response) {
                 if (response.status == 'success') {
