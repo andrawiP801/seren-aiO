@@ -21,7 +21,12 @@ $(document).ready(function() {
                 if (response.status == 'success') {
                     $('#message-input').val('');
                     fetchMessages();
+                } else {
+                    console.error(response.errors || response.error);
                 }
+            },
+            error: function(xhr, status, error) {
+                console.error('Server error:', error);
             }
         });
     });

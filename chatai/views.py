@@ -273,9 +273,13 @@ def send_message(request):
     if request.method == 'POST':
         form = MessageForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('servicio_page')
-    return JsonResponse({'status': 'fail'})
+            message = form.save(commit=False)
+            message.user = request.user
+            message.save()
+            return JsonResponse({'status': 'success'})
+        else:
+            return JsonResponse({'status': 'fail', 'errors': form.errors})
+    return JsonResponse({'status': 'fail', 'error': 'Invalid request'})
 
 @login_required
 def fetch_messages(request):
