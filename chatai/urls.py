@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
-from .views import home_page, login_page, signup_page, logout_view, main_page, chat_page, chat_query, profile_page, books_page, book_detail, foro_page, emotional_state, save_emotion, emotion_log, servicio_page
+from .views import home_page, login_page, signup_page, logout_view, main_page, chat_page, chat_query, profile_page, books_page, book_detail, foro_page, emotional_state, save_emotion, emotion_log, servicio_page, send_message,
+fetch_messages
 
 urlpatterns = [
     path('', home_page, name='home'),
@@ -18,4 +19,6 @@ urlpatterns = [
     path('save_emotion/', save_emotion, name='save_emotion'),
     path('emotion_log/', emotion_log, name='emotion_log'),
     path('servicio/', servicio_page, name='servicio_page'),
+    path('send_message/', send_message, name='send_message'),
+    path('fetch_messages/', fetch_messages, name='fetch_messages'),
 ]
