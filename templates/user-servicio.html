@@ -68,7 +68,7 @@ $(document).ready(function() {
 
     function fetchMessages() {
         $.ajax({
-            url: '{% url "fetch_messages" userId %}',
+            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),  // Inserta el userId en la URL
             type: 'GET',
             success: function(data) {
                 $('#messages').html('');
