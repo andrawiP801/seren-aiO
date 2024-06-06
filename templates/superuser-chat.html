@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     function fetchMessages() {
         $.ajax({
-            url: '{% url "fetch_messages" chat_user.id %}',
+            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),
             type: 'GET',
             success: function(data) {
                 $('#messages').html('');
@@ -79,9 +79,9 @@ $(document).ready(function() {
 {% endblock extrahead %}
 
 {% block headerTitle %}
-    <div class="page-title d-none d-md-block">
-        <h2>Chat con {{ chat_user.username }}</h2>
-    </div>
+<div class="page-title d-none d-md-block">
+    <h2>Chat con {{ chat_user.username }}</h2>
+</div>
 {% endblock headerTitle %}
 
 {% block main %}

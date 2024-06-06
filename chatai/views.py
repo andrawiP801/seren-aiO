@@ -262,7 +262,7 @@ def emotion_log(request):
 @login_required
 def servicio_page(request):
     if request.user.is_superuser:
-        users = User.objects.exclude(is_superuser=True)
+        users = User.objects.filter(is_superuser=False)
         return render(request, 'superuser-servicio.html', {'users': users})
     else:
         faqs = FAQ.objects.all()
@@ -272,7 +272,7 @@ def servicio_page(request):
 def user_chat(request, user_id):
     if request.user.is_superuser:
         user = User.objects.get(id=user_id)
-        messages = Message.objects.filter(user=user)
+        messages = Message.objects.filter(user=user).order_by('timestamp')
         return render(request, 'superuser-chat.html', {'messages': messages, 'chat_user': user})
     return redirect('servicio_page')
 
@@ -283,15 +283,13 @@ def send_message(request):
         text = data.get('text')
         user_id = data.get('user_id')
         user = User.objects.get(id=user_id)
-        conversation_id = f"{user.id}-{request.user.id}"  # ID único para la conversación
-        Message.objects.create(user=user, text=text, conversation_id=conversation_id)
+        Message.objects.create(user=user, text=text)
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'fail', 'error': 'Invalid request'})
 
 @login_required
 def fetch_messages(request, user_id):
     user = User.objects.get(id=user_id)
-    conversation_id = f"{user.id}-{request.user.id}"
-    messages = Message.objects.filter(conversation_id=conversation_id)
+    messages = Message.objects.filter(user=user).order_by('timestamp')
     messages_data = [{'id': message.id, 'user': message.user.username, 'text': message.text, 'response': message.response, 'timestamp': message.timestamp} for message in messages]
     return JsonResponse(messages_data, safe=False)

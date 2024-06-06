@@ -42,9 +42,6 @@ $(document).ready(function() {
             url: '{% url "send_message" %}',
             type: 'POST',
             contentType: 'application/json',
-            headers: {
-                'X-CSRFToken': csrftoken
-            },
             data: JSON.stringify({
                 'text': $('#message-input').val(),
                 'user_id': userId
@@ -82,9 +79,9 @@ $(document).ready(function() {
 {% endblock extrahead %}
 
 {% block headerTitle %}
-    <div class="page-title d-none d-md-block">
-        <h2>Servicio a Cliente</h2>
-    </div>
+<div class="page-title d-none d-md-block">
+    <h2>Servicio a Cliente</h2>
+</div>
 {% endblock headerTitle %}
 
 {% block main %}
