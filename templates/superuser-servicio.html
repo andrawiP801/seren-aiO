@@ -3,6 +3,29 @@
 
 {% block title %} Servicio - SerenAI {% endblock title %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/servicio.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    function fetchMessages() {
+        $.ajax({
+            url: '{% url "fetch_messages" %}',
+            type: 'GET',
+            success: function(data) {
+                $('#user-messages').html('');
+                data.forEach(function(message) {
+                    $('#user-messages').append('<p><strong>' + message.user + ':</strong> ' + message.text + '</p>');
+                });
+            }
+        });
+    }
+
+    fetchMessages();
+});
+</script>
+{% endblock extrahead %}
+
 {% block headerTitle %}
     <div class="page-title d-none d-md-block">
         <h2>Servicio a Cliente</h2>
@@ -13,7 +36,7 @@
 <main class="servicio-main">
     <section class="servicio-admin-section">
         <h2>Mensajes de Usuarios</h2>
-        <div class="user-messages servicio-messages">
+        <div id="user-messages" class="user-messages servicio-messages">
             <!-- Lista de mensajes de usuarios -->
         </div>
     </section>

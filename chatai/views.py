@@ -7,12 +7,12 @@ from django.views.decorators.csrf import csrf_exempt
 from langchain_core.messages import HumanMessage, AIMessage
 
 from .ai_model import get_chat
-from .models import User, Chat, Book, ChatMessage, EmotionLog
+from .models import User, Chat, Book, ChatMessage, EmotionLog, Message, FAQ
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.utils import timezone
-from .forms import ChatMessageForm
+from .forms import ChatMessageForm, MessageForm
 import json
 
 
@@ -262,6 +262,23 @@ def emotion_log(request):
 @login_required
 def servicio_page(request):
     if request.user.is_superuser:
-        return render(request, 'superuser-servicio.html')
+        messages = Message.objects.all()
+        return render(request, 'superuser-servicio.html', {'messages': messages})
     else:
-        return render(request, 'user-servicio.html')
+        faqs = FAQ.objects.all()
+        return render(request, 'user-servicio.html', {'faqs': faqs})
+
+@login_required
+def send_message(request):
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('servicio_page')
+    return JsonResponse({'status': 'fail'})
+
+@login_required
+def fetch_messages(request):
+    messages = Message.objects.all()
+    messages_data = [{'user': message.user.username, 'text': message.text, 'timestamp': message.timestamp} for message in messages]
+    return JsonResponse(messages_data, safe=False)

@@ -18,11 +18,12 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/chat.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/servicio.css' %}">
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    {% block extrahead %}
+    {% endblock extrahead %}
   </head>
   <body>
     <header class="main-header">

@@ -3,6 +3,47 @@
 
 {% block title %} Servicio Cliente - SerenAI {% endblock title %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/servicio.css' %}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#send-message-form').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+            url: '{% url "send_message" %}',
+            type: 'POST',
+            data: {
+                'text': $('#message-input').val(),
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                if (response.status == 'success') {
+                    $('#message-input').val('');
+                    fetchMessages();
+                }
+            }
+        });
+    });
+
+    function fetchMessages() {
+        $.ajax({
+            url: '{% url "fetch_messages" %}',
+            type: 'GET',
+            success: function(data) {
+                $('#messages').html('');
+                data.forEach(function(message) {
+                    $('#messages').append('<p><strong>' + message.user + ':</strong> ' + message.text + '</p>');
+                });
+            }
+        });
+    }
+
+    fetchMessages();
+});
+</script>
+{% endblock extrahead %}
+
 {% block headerTitle %}
     <div class="page-title d-none d-md-block">
         <h2>Servicio a Cliente</h2>
@@ -13,18 +54,23 @@
 <main class="servicio-main">
     <section class="servicio-chat-section">
         <div class="servicio-chat-window">
-            <div class="servicio-messages">
+            <div id="messages" class="servicio-messages">
                 <!-- Mensajes del chat -->
             </div>
             <div class="servicio-message-input">
-                <input type="text" placeholder="Escribe tu mensaje...">
-                <button>Enviar</button>
+                <form id="send-message-form" method="POST">
+                    {% csrf_token %}
+                    <input type="text" id="message-input" placeholder="Escribe tu mensaje...">
+                    <button type="submit">Enviar</button>
+                </form>
             </div>
         </div>
         <div class="servicio-faq-section">
             <h2>Preguntas frecuentes</h2>
             <ul class="servicio-faq-list">
-                <!-- Lista de FAQs -->
+                {% for faq in faqs %}
+                <li><strong>{{ faq.question }}</strong><br>{{ faq.answer }}</li>
+                {% endfor %}
             </ul>
         </div>
     </section>
