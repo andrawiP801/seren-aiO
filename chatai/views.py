@@ -262,8 +262,8 @@ def emotion_log(request):
 @login_required
 def servicio_page(request):
     if request.user.is_superuser:
-        messages = Message.objects.all()
-        return render(request, 'superuser-servicio.html', {'messages': messages})
+        users = User.objects.exclude(is_superuser=True)
+        return render(request, 'superuser-servicio.html', {'users': users})
     else:
         faqs = FAQ.objects.all()
         return render(request, 'user-servicio.html', {'faqs': faqs})
@@ -283,7 +283,7 @@ def send_message(request):
         text = data.get('text')
         user_id = data.get('user_id')
         user = User.objects.get(id=user_id)
-        conversation_id = f"{request.user.id}-{user.id}"  # ID único para la conversación
+        conversation_id = f"{user.id}-{request.user.id}"  # ID único para la conversación
         Message.objects.create(user=user, text=text, conversation_id=conversation_id)
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'fail', 'error': 'Invalid request'})
@@ -291,7 +291,7 @@ def send_message(request):
 @login_required
 def fetch_messages(request, user_id):
     user = User.objects.get(id=user_id)
-    conversation_id = f"{request.user.id}-{user.id}"
+    conversation_id = f"{user.id}-{request.user.id}"
     messages = Message.objects.filter(conversation_id=conversation_id)
     messages_data = [{'id': message.id, 'user': message.user.username, 'text': message.text, 'response': message.response, 'timestamp': message.timestamp} for message in messages]
     return JsonResponse(messages_data, safe=False)
