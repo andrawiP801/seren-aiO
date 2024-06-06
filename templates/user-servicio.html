@@ -8,21 +8,25 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+    var userId = {{ request.user.id }};
+    
     $('#send-message-form').on('submit', function(event) {
         event.preventDefault();
         $.ajax({
             url: '{% url "send_message" %}',
             type: 'POST',
-            data: {
+            contentType: 'application/json',
+            data: JSON.stringify({
                 'text': $('#message-input').val(),
+                'user_id': userId,
                 'csrfmiddlewaretoken': '{{ csrf_token }}'
-            },
+            }),
             success: function(response) {
                 if (response.status == 'success') {
                     $('#message-input').val('');
                     fetchMessages();
                 } else {
-                    console.error(response.errors || response.error);
+                    console.error(response.error);
                 }
             },
             error: function(xhr, status, error) {
@@ -33,7 +37,7 @@ $(document).ready(function() {
 
     function fetchMessages() {
         $.ajax({
-            url: '{% url "fetch_messages" %}',
+            url: '{% url "fetch_messages" userId %}',
             type: 'GET',
             success: function(data) {
                 $('#messages').html('');
