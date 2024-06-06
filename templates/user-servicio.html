@@ -8,8 +8,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    var userId = "{{ request.user.id }}";
-    
+    var userId = "{{ request.user.id }}";  // Asigna el userId desde Django
+
     $('#send-message-form').on('submit', function(event) {
         event.preventDefault();
         $.ajax({
