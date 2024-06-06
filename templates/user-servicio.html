@@ -14,7 +14,6 @@ function getCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;
@@ -28,14 +27,14 @@ const csrftoken = getCookie('csrftoken');
 
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-        if (!(/^GET|HEAD|OPTIONS|TRACE$/.test(settings.type)) && !this.crossDomain) {
+        if (!this.crossDomain && !(/^GET|HEAD|OPTIONS|TRACE$/.test(settings.type))) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
 });
 
 $(document).ready(function() {
-    var userId = "{{ request.user.id }}";  // Asigna el userId desde Django
+    var userId = "{{ request.user.id }}";
 
     $('#send-message-form').on('submit', function(event) {
         event.preventDefault();
@@ -43,6 +42,9 @@ $(document).ready(function() {
             url: '{% url "send_message" %}',
             type: 'POST',
             contentType: 'application/json',
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
             data: JSON.stringify({
                 'text': $('#message-input').val(),
                 'user_id': userId
@@ -63,7 +65,7 @@ $(document).ready(function() {
 
     function fetchMessages() {
         $.ajax({
-            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),  // Inserta el userId en la URL
+            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),
             type: 'GET',
             success: function(data) {
                 $('#messages').html('');
