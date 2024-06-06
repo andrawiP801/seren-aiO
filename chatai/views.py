@@ -286,3 +286,17 @@ def fetch_messages(request):
     messages = Message.objects.all()
     messages_data = [{'user': message.user.username, 'text': message.text, 'timestamp': message.timestamp} for message in messages]
     return JsonResponse(messages_data, safe=False)
+
+@login_required
+def send_response(request):
+    if request.method == 'POST':
+        message_id = request.POST.get('message_id')
+        response_text = request.POST.get('response')
+        try:
+            message = Message.objects.get(id=message_id)
+            message.response = response_text
+            message.save()
+            return JsonResponse({'status': 'success'})
+        except Message.DoesNotExist:
+            return JsonResponse({'status': 'fail', 'error': 'Message not found'})
+    return JsonResponse({'status': 'fail', 'error': 'Invalid request'})

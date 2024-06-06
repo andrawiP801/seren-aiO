@@ -15,7 +15,30 @@ $(document).ready(function() {
             success: function(data) {
                 $('#user-messages').html('');
                 data.forEach(function(message) {
-                    $('#user-messages').append('<p><strong>' + message.user + ':</strong> ' + message.text + '</p>');
+                    $('#user-messages').append('<div class="message"><p><strong>' + message.user + ':</strong> ' + message.text + '</p><p><strong>Respuesta:</strong> ' + (message.response || 'N/A') + '</p><textarea class="response-input" data-message-id="' + message.id + '"></textarea><button class="send-response-btn" data-message-id="' + message.id + '">Responder</button></div>');
+                });
+                $('.send-response-btn').on('click', function() {
+                    var messageId = $(this).data('message-id');
+                    var responseText = $(this).siblings('.response-input').val();
+                    $.ajax({
+                        url: '{% url "send_response" %}',
+                        type: 'POST',
+                        data: {
+                            'message_id': messageId,
+                            'response': responseText,
+                            'csrfmiddlewaretoken': '{{ csrf_token }}'
+                        },
+                        success: function(response) {
+                            if (response.status == 'success') {
+                                fetchMessages();
+                            } else {
+                                console.error(response.error);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Server error:', error);
+                        }
+                    });
                 });
             }
         });

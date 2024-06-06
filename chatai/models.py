@@ -70,8 +70,9 @@ class EmotionLog(models.Model):
         return f"{self.user.username} - {self.emotion} - {self.date}"
     
 class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_messages')
     text = models.TextField()
+    response = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
