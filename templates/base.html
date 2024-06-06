@@ -75,6 +75,8 @@
         // Ensure jQuery is loaded before any script that uses it
         if (typeof jQuery === 'undefined') {
             console.error('jQuery not loaded');
+        } else {
+            console.log('jQuery loaded successfully');
         }
     </script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

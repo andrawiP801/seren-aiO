@@ -42,47 +42,53 @@
 
 {% block script %}
 <script>
-$(document).ready(function() {
-    var userId = "{{ request.user.id }}";
+document.addEventListener("DOMContentLoaded", function() {
+    if (typeof jQuery === 'undefined') {
+        console.error('jQuery is not loaded');
+    } else {
+        $(document).ready(function() {
+            var userId = "{{ request.user.id }}";
 
-    $('#send-message-form').on('submit', function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: '{% url "send_message" %}',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                'text': $('#message-input').val(),
-                'user_id': userId
-            }),
-            success: function(response) {
-                if (response.status == 'success') {
-                    $('#message-input').val('');
-                    fetchMessages();
-                } else {
-                    console.error(response.error);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Server error:', error);
-            }
-        });
-    });
+            $('#send-message-form').on('submit', function(event) {
+                event.preventDefault();
+                $.ajax({
+                    url: '{% url "send_message" %}',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        'text': $('#message-input').val(),
+                        'user_id': userId
+                    }),
+                    success: function(response) {
+                        if (response.status == 'success') {
+                            $('#message-input').val('');
+                            fetchMessages();
+                        } else {
+                            console.error(response.error);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Server error:', error);
+                    }
+                });
+            });
 
-    function fetchMessages() {
-        $.ajax({
-            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),
-            type: 'GET',
-            success: function(data) {
-                $('#messages').html('');
-                data.forEach(function(message) {
-                    $('#messages').append('<p><strong>' + message.user + ':</strong> ' + message.text + '</p>');
+            function fetchMessages() {
+                $.ajax({
+                    url: '{% url "fetch_messages" 0 %}'.replace('0', userId),
+                    type: 'GET',
+                    success: function(data) {
+                        $('#messages').html('');
+                        data.forEach(function(message) {
+                            $('#messages').append('<p><strong>' + message.user + ':</strong> ' + message.text + '</p>');
+                        });
+                    }
                 });
             }
+
+            fetchMessages();
         });
     }
-
-    fetchMessages();
 });
 </script>
 {% endblock script %}
