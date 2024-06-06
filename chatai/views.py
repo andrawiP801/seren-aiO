@@ -290,13 +290,16 @@ def fetch_messages(request):
 @login_required
 def send_response(request):
     if request.method == 'POST':
-        message_id = request.POST.get('message_id')
-        response_text = request.POST.get('response')
         try:
+            data = json.loads(request.body)
+            message_id = data.get('message_id')
+            response_text = data.get('response')
             message = Message.objects.get(id=message_id)
             message.response = response_text
             message.save()
             return JsonResponse({'status': 'success'})
         except Message.DoesNotExist:
             return JsonResponse({'status': 'fail', 'error': 'Message not found'})
+        except Exception as e:
+            return JsonResponse({'status': 'fail', 'error': str(e)})
     return JsonResponse({'status': 'fail', 'error': 'Invalid request'})

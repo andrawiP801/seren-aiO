@@ -23,11 +23,12 @@ $(document).ready(function() {
                     $.ajax({
                         url: '{% url "send_response" %}',
                         type: 'POST',
-                        data: {
+                        contentType: 'application/json',
+                        data: JSON.stringify({
                             'message_id': messageId,
                             'response': responseText,
                             'csrfmiddlewaretoken': '{{ csrf_token }}'
-                        },
+                        }),
                         success: function(response) {
                             if (response.status == 'success') {
                                 fetchMessages();
