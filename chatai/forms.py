@@ -1,5 +1,6 @@
 from django import forms
-from .models import ChatMessage
+from .models import ChatMessage, Message
+
 
 class ChatMessageForm(forms.ModelForm):
     class Meta:
