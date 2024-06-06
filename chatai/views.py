@@ -269,37 +269,29 @@ def servicio_page(request):
         return render(request, 'user-servicio.html', {'faqs': faqs})
 
 @login_required
+def user_chat(request, user_id):
+    if request.user.is_superuser:
+        user = User.objects.get(id=user_id)
+        messages = Message.objects.filter(user=user)
+        return render(request, 'superuser-chat.html', {'messages': messages, 'chat_user': user})
+    return redirect('servicio_page')
+
+@login_required
 def send_message(request):
     if request.method == 'POST':
-        form = MessageForm(request.POST)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.user = request.user
-            message.save()
-            return JsonResponse({'status': 'success'})
-        else:
-            return JsonResponse({'status': 'fail', 'errors': form.errors})
+        data = json.loads(request.body)
+        text = data.get('text')
+        user_id = data.get('user_id')
+        user = User.objects.get(id=user_id)
+        conversation_id = f"{request.user.id}-{user.id}"  # ID único para la conversación
+        Message.objects.create(user=user, text=text, conversation_id=conversation_id)
+        return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'fail', 'error': 'Invalid request'})
 
 @login_required
-def fetch_messages(request):
-    messages = Message.objects.all()
-    messages_data = [{'user': message.user.username, 'text': message.text, 'timestamp': message.timestamp} for message in messages]
+def fetch_messages(request, user_id):
+    user = User.objects.get(id=user_id)
+    conversation_id = f"{request.user.id}-{user.id}"
+    messages = Message.objects.filter(conversation_id=conversation_id)
+    messages_data = [{'id': message.id, 'user': message.user.username, 'text': message.text, 'response': message.response, 'timestamp': message.timestamp} for message in messages]
     return JsonResponse(messages_data, safe=False)
-
-@login_required
-def send_response(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            message_id = data.get('message_id')
-            response_text = data.get('response')
-            message = Message.objects.get(id=message_id)
-            message.response = response_text
-            message.save()
-            return JsonResponse({'status': 'success'})
-        except Message.DoesNotExist:
-            return JsonResponse({'status': 'fail', 'error': 'Message not found'})
-        except Exception as e:
-            return JsonResponse({'status': 'fail', 'error': str(e)})
-    return JsonResponse({'status': 'fail', 'error': 'Invalid request'})

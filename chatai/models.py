@@ -74,6 +74,7 @@ class Message(models.Model):
     text = models.TextField()
     response = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    conversation_id = models.CharField(max_length=255)  # Identificador de conversación único
 
     def __str__(self):
         return f"{self.user.username}: {self.text[:20]}"

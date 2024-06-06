@@ -6,48 +6,6 @@
 {% block extrahead %}
 <link rel="stylesheet" href="{% static 'css/servicio.css' %}">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    function fetchMessages() {
-        $.ajax({
-            url: '{% url "fetch_messages" %}',
-            type: 'GET',
-            success: function(data) {
-                $('#user-messages').html('');
-                data.forEach(function(message) {
-                    $('#user-messages').append('<div class="message"><p><strong>' + message.user + ':</strong> ' + message.text + '</p><p><strong>Respuesta:</strong> ' + (message.response || 'N/A') + '</p><textarea class="response-input" data-message-id="' + message.id + '"></textarea><button class="send-response-btn" data-message-id="' + message.id + '">Responder</button></div>');
-                });
-                $('.send-response-btn').on('click', function() {
-                    var messageId = $(this).data('message-id');
-                    var responseText = $(this).siblings('.response-input').val();
-                    $.ajax({
-                        url: '{% url "send_response" %}',
-                        type: 'POST',
-                        contentType: 'application/json',
-                        data: JSON.stringify({
-                            'message_id': messageId,
-                            'response': responseText,
-                            'csrfmiddlewaretoken': '{{ csrf_token }}'
-                        }),
-                        success: function(response) {
-                            if (response.status == 'success') {
-                                fetchMessages();
-                            } else {
-                                console.error(response.error);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Server error:', error);
-                        }
-                    });
-                });
-            }
-        });
-    }
-
-    fetchMessages();
-});
-</script>
 {% endblock extrahead %}
 
 {% block headerTitle %}
@@ -59,10 +17,12 @@ $(document).ready(function() {
 {% block main %}
 <main class="servicio-main">
     <section class="servicio-admin-section">
-        <h2>Mensajes de Usuarios</h2>
-        <div id="user-messages" class="user-messages servicio-messages">
-            <!-- Lista de mensajes de usuarios -->
-        </div>
+        <h2>Usuarios</h2>
+        <ul id="user-list">
+            {% for user in users %}
+            <li><a href="{% url 'user_chat' user.id %}">{{ user.username }}</a></li>
+            {% endfor %}
+        </ul>
     </section>
 </main>
 {% endblock main %}
