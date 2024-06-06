@@ -34,7 +34,7 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-    var userId = "{{ chat_user.id }}";  // Asigna el userId desde Django
+    var userId = "{{ chat_user.id }}";
 
     $('#send-message-form').on('submit', function(event) {
         event.preventDefault();
@@ -42,9 +42,6 @@ $(document).ready(function() {
             url: '{% url "send_message" %}',
             type: 'POST',
             contentType: 'application/json',
-            headers: {
-                'X-CSRFToken': csrftoken
-            },
             data: JSON.stringify({
                 'text': $('#message-input').val(),
                 'user_id': userId
