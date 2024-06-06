@@ -26,9 +26,14 @@ function getCookie(name) {
 
 const csrftoken = getCookie('csrftoken');
 
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
 $.ajaxSetup({
     beforeSend: function(xhr, settings) {
-        if (!this.crossDomain) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
@@ -63,7 +68,7 @@ $(document).ready(function() {
 
     function fetchMessages() {
         $.ajax({
-            url: '{% url "fetch_messages" 0 %}'.replace('0', userId),  // Inserta el userId en la URL
+            url: '{% url "fetch_messages" userId %}',
             type: 'GET',
             success: function(data) {
                 $('#messages').html('');
